@@ -15,6 +15,20 @@ function App() {
     setLogin(id);      
   }
 
+  let user = {
+    id : "",
+    age : 0,
+    gender : "male",
+    link : "",
+    mbti : "",
+    addr : "",
+    keyword : [],
+    ideal_age : 0,
+    ideal_mbti : "",
+    ideal_addr : "",
+    ideal_keyword : []
+  }
+
   return (
     <div className="App">
       <Footer></Footer>
