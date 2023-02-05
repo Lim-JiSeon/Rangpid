@@ -17,7 +17,7 @@ function App() {
   const [gender, setGender] = useState("");
   const [height, setHeight] = useState("");
   const [link, setLink] = useState("");
-  const [mbti, setMbti] = useState([]);
+  const [mbti, setMbti] = useState("");
   const [addr, setAddr] = useState("");
   const [keyword, setKeyword] = useState([]);
   const [idealage, setIdealage] = useState([]);
@@ -28,7 +28,7 @@ function App() {
   function getLogin(id) {
     setLogin(id);      
   }
-  function getUserData(id, age, height, gender, link="", mbti, addr, keyword) {
+  function getUserData(id, age, height, gender, link, mbti, addr, keyword) {
      setId(id);
      setAge(age);
      setHeight(height)

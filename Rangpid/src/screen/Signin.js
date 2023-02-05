@@ -9,20 +9,21 @@ function Signin(props) {
     
     const [val1, setVal1] = useState("");
     const [val2, setVal2] = useState("");
-    const [loc1, setLoc1] = useState("");
-    const [loc2, setLoc2] = useState("");
+    
 
-    function selectText() {
+    function selectSidoText() {
         let sidoSelect = document.getElementById("sido");
-        let sigugunSelect = document.getElementById("sigugun");
-  
         let sidoText = sidoSelect.options[sidoSelect.selectedIndex].text;
+        user_information['addr'] = sidoText;
+        console.log(user_information['addr']);
+    }
+
+    function selectSigugunText() {
+        let sigugunSelect = document.getElementById("sigugun");
         let sigugunText = sigugunSelect.options[sigugunSelect.selectedIndex].text;
-        
-        setLoc1(sidoText);
-        setLoc2(sigugunText);
-        user_information['addr'] = loc1+" "+loc2;
-      }
+        user_information['addr'] += sigugunText;
+        console.log(user_information['addr']);
+    }
 
     let user_information = {
         id : "",
@@ -81,67 +82,67 @@ function Signin(props) {
                     <div className='mbti-btn-container'>
                         <button className='enfj' 
                             onClick={() => {
-                                user_information['mbti'] = [...user_information['mbti'], "ENFJ"];
+                                user_information['mbti'] = "ENFJ";
                                 }}>ENFJ</button>
                         <button className='infj'
                             onClick={() => {
-                                user_information['mbti'] = [...user_information['mbti'], "INFJ"];
+                                user_information['mbti'] = "INFJ";
                                 }}>INFJ</button>
                         <button className='intj'
                             onClick={() => {
-                                user_information['mbti'] = [...user_information['mbti'], "INTJ"];
+                                user_information['mbti'] = "INTJ";
                                 }}>INTJ</button>
                         <button className='entj'
                             onClick={() => {
-                                user_information['mbti'] = [...user_information['mbti'], "ENTJ"];
+                                user_information['mbti'] = "ENTJ";
                                 }}>ENTJ</button>
                         <button className='enfp'
                             onClick={() => {
-                                user_information['mbti'] = [...user_information['mbti'], "ENFP"];
+                                user_information['mbti'] = "ENFP";
                                 }}>ENFP</button>
                         <button className='infp'
                             onClick={() => {
-                                user_information['mbti'] = [...user_information['mbti'], "INFP"];
+                                user_information['mbti'] = "INFP";
                                 }}>INFP</button>
                         <button className='intp'
                             onClick={() => {
-                                user_information['mbti'] = [...user_information['mbti'], "INTP"];
+                                user_information['mbti'] = "INTP";
                                 }}>INTP</button>
                         <button className='entp'
                             onClick={() => {
-                                user_information['mbti'] = [...user_information['mbti'], "ENTP"];
+                                user_information['mbti'] = "ENTP";
                                 }}>ENTP</button>
                         <button className='esfp'
                             onClick={() => {
-                                user_information['mbti'] = [...user_information['mbti'], "ESFP"];
+                                user_information['mbti'] = "ESFP";
                                 }}>ESFP</button>
                         <button className='isfp'
                             onClick={() => {
-                                user_information['mbti'] = [...user_information['mbti'], "ISFP"];
+                                user_information['mbti'] = "ISFP";
                                 }}>ISFP</button>
                         <button className='istp'
                             onClick={() => {
-                                user_information['mbti'] = [...user_information['mbti'], "ISTP"];
+                                user_information['mbti'] = "ISTP";
                                 }}>ISTP</button>
                         <button className='estp'
                             onClick={() => {
-                                user_information['mbti'] = [...user_information['mbti'], "ESTP"];
+                                user_information['mbti'] = "ESTP";
                                 }}>ESTP</button>
                         <button className='esfj'
                             onClick={() => {
-                                user_information['mbti'] = [...user_information['mbti'], "ESFJ"];
+                                user_information['mbti'] = "ESFJ";
                                 }}>ESFJ</button>
                         <button className='isfj'
                             onClick={() => {
-                                user_information['mbti'] = [...user_information['mbti'], "ISFJ"];
+                                user_information['mbti'] = "ISFJ";
                                 }}>ISFJ</button>
                         <button className='istj'
                             onClick={() => {
-                                user_information['mbti'] = [...user_information['mbti'], "ISTJ"];
+                                user_information['mbti'] = "ISTJ";
                                 }}>ISTJ</button>
                         <button className='estj'
                             onClick={() => {
-                                user_information['mbti'] = [...user_information['mbti'], "ESTJ"];
+                                user_information['mbti'] = "ESTJ";
                                 }}>ESTJ</button>
                     </div>
                 </div>
@@ -149,9 +150,10 @@ function Signin(props) {
                     <div className='detail-title'>거주지</div>
                     <div className="select-container">
                         <div className="select-address">
-                            <select id="sido" onChange={(e) => {
-                            setVal1(e.target.value)
-                            selectText()
+                            <select id="sido" 
+                            onChange={(e) => {
+                                setVal1(e.target.value);
+                                selectSidoText();
                             }}>
                             <option value="">선택</option>
                             {sido.map((el) => (
@@ -163,9 +165,10 @@ function Signin(props) {
                         </div>
 
                         <div className="select-address">     
-                            <select id="sigugun" onChange={(e) => {
-                            setVal2(e.target.value)
-                            selectText()
+                            <select id="sigugun" 
+                            onChange={(e) => {
+                                setVal2(e.target.value);
+                                selectSigugunText();
                             }}>
                             <option value="">선택</option>
                             {sigugun
@@ -259,7 +262,8 @@ function Signin(props) {
                         type='submit'
                         onClick={() => {
                         navigate("/signin2");
-                        props.getUserData(user_information['id'], user_information['age'], user_information['gender'], user_information['link'], user_information['mbti'], user_information['addr'], user_information['keyword']);
+                        console.log(user_information['addr']);
+                        props.getUserData(user_information['id'], user_information['age'], user_information['height'], user_information['gender'], user_information['link'], user_information['mbti'], user_information['addr'], user_information['keyword']);
                         }}
                     >
                         다음

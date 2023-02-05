@@ -51,6 +51,7 @@ function Information(props) {
                         <div className='mini-title'>성별</div>
                         <button className='m-sex'>남성</button>
                         <button className='f-sex'>여성</button>
+                        <div className='temp-delete'>{props.user['gender']}</div>
                     </div>
                     <div className='link-input-container'>
                         <div className='mini-title'>오픈채팅 링크</div>
@@ -64,6 +65,7 @@ function Information(props) {
                 </div>
                 <div className='mbti-input-container'>
                     <div className='detail-title'>성격(MBTI)</div>
+                    <div className='temp-delete'>{props.user['mbti']}</div>
                     <div className='mbti-btn-container'>
                         <button className='enfj'>ENFJ</button>
                         <button className='infj'>INFJ</button>
@@ -85,6 +87,7 @@ function Information(props) {
                 </div>
                 <div className='addr-input-container'>
                     <div className='detail-title'>거주지</div>
+                    <div className='temp-delete'>{props.user['addr']}</div>
                     <div className="select-container">
                         <div className="select-address">
                             <select id="sido" onChange={(e) => {
@@ -119,6 +122,7 @@ function Information(props) {
                 </div>
                 <div className='keyword-input-container'>
                     <div className='detail-title'>키워드</div>
+                    <div className='temp-delete'>{props.user['keyword']}</div>
                     <div className='keyword-content-container'>
                         <div className='mini-title'>키</div>
                             <input className='height-input'
