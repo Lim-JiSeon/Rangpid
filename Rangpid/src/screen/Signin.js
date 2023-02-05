@@ -21,11 +21,19 @@ function Signin(props) {
         
         setLoc1(sidoText);
         setLoc2(sigugunText);
+        user_information['addr'] = loc1+" "+loc2;
       }
 
-    function sendData(){
-        props.setLocation(loc1+" "+loc2);
-    }
+    let user_information = {
+        id : "",
+        age : 0,
+        height : 0,
+        gender : "male",
+        link : "",
+        mbti : [],
+        addr : "",
+        keyword : [],
+    };
 
     return (
         <div className="wrap">
@@ -36,21 +44,33 @@ function Signin(props) {
                     <div className='detail-title'>정보 입력</div>
                     <div className='id-input-container'>
                         <div className='mini-title'>아이디</div>
-                        <input className='id-input'></input>
+                        <input className='id-input'
+                            type="text"
+                            onChange={(event) => user_information['id'] = event.target.value}></input>
                         <button className='id-check-btn'>중복확인</button>
                     </div>
                     <div className='age-input-container'>
                         <div className='mini-title'>나이</div>
-                        <input className='age-input'></input>
+                        <input className='age-input'
+                            type="text"
+                            onChange={(event) =>user_information['age'] = Number(event.target.value)}></input>
                     </div>
                     <div className='sex-input-container'>
                         <div className='mini-title'>성별</div>
-                        <button className='m-sex'>남성</button>
-                        <button className='f-sex'>여성</button>
+                        <button className='m-sex'
+                            onClick={() => {
+                                user_information['gender'] = 'male'
+                                }}>남성</button>
+                        <button className='f-sex'
+                            onClick={() => {
+                                user_information['gender'] = 'female'
+                                }}>여성</button>
                     </div>
                     <div className='link-input-container'>
                         <div className='mini-title'>오픈채팅 링크</div>
-                        <input className='link-input'></input>
+                        <input className='link-input'
+                            type="text"
+                            onChange={(event) => user_information['link'] = event.target.value}></input>
                         <div className='detail-content'>
                             *매칭 후 상대방에게 전달될 오픈채팅방 링크입니다. 카카오톡 오픈채팅 방을 만든 뒤 링크를 작성해주세요. 
                         </div>
@@ -59,22 +79,70 @@ function Signin(props) {
                 <div className='mbti-input-container'>
                     <div className='detail-title'>성격(MBTI)</div>
                     <div className='mbti-btn-container'>
-                        <button className='enfj'>ENFJ</button>
-                        <button className='infj'>INFJ</button>
-                        <button className='intj'>INTJ</button>
-                        <button className='entj'>ENTJ</button>
-                        <button className='enfp'>ENFP</button>
-                        <button className='infp'>INFP</button>
-                        <button className='intp'>INTP</button>
-                        <button className='entp'>ENTP</button>
-                        <button className='esfp'>ESFP</button>
-                        <button className='isfp'>ISFP</button>
-                        <button className='istp'>ISTP</button>
-                        <button className='estp'>ESTP</button>
-                        <button className='esfj'>ESFJ</button>
-                        <button className='isfj'>ISFJ</button>
-                        <button className='istj'>ISTJ</button>
-                        <button className='estj'>ESTJ</button>
+                        <button className='enfj' 
+                            onClick={() => {
+                                user_information['mbti'] = [...user_information['mbti'], "ENFJ"];
+                                }}>ENFJ</button>
+                        <button className='infj'
+                            onClick={() => {
+                                user_information['mbti'] = [...user_information['mbti'], "INFJ"];
+                                }}>INFJ</button>
+                        <button className='intj'
+                            onClick={() => {
+                                user_information['mbti'] = [...user_information['mbti'], "INTJ"];
+                                }}>INTJ</button>
+                        <button className='entj'
+                            onClick={() => {
+                                user_information['mbti'] = [...user_information['mbti'], "ENTJ"];
+                                }}>ENTJ</button>
+                        <button className='enfp'
+                            onClick={() => {
+                                user_information['mbti'] = [...user_information['mbti'], "ENFP"];
+                                }}>ENFP</button>
+                        <button className='infp'
+                            onClick={() => {
+                                user_information['mbti'] = [...user_information['mbti'], "INFP"];
+                                }}>INFP</button>
+                        <button className='intp'
+                            onClick={() => {
+                                user_information['mbti'] = [...user_information['mbti'], "INTP"];
+                                }}>INTP</button>
+                        <button className='entp'
+                            onClick={() => {
+                                user_information['mbti'] = [...user_information['mbti'], "ENTP"];
+                                }}>ENTP</button>
+                        <button className='esfp'
+                            onClick={() => {
+                                user_information['mbti'] = [...user_information['mbti'], "ESFP"];
+                                }}>ESFP</button>
+                        <button className='isfp'
+                            onClick={() => {
+                                user_information['mbti'] = [...user_information['mbti'], "ISFP"];
+                                }}>ISFP</button>
+                        <button className='istp'
+                            onClick={() => {
+                                user_information['mbti'] = [...user_information['mbti'], "ISTP"];
+                                }}>ISTP</button>
+                        <button className='estp'
+                            onClick={() => {
+                                user_information['mbti'] = [...user_information['mbti'], "ESTP"];
+                                }}>ESTP</button>
+                        <button className='esfj'
+                            onClick={() => {
+                                user_information['mbti'] = [...user_information['mbti'], "ESFJ"];
+                                }}>ESFJ</button>
+                        <button className='isfj'
+                            onClick={() => {
+                                user_information['mbti'] = [...user_information['mbti'], "ISFJ"];
+                                }}>ISFJ</button>
+                        <button className='istj'
+                            onClick={() => {
+                                user_information['mbti'] = [...user_information['mbti'], "ISTJ"];
+                                }}>ISTJ</button>
+                        <button className='estj'
+                            onClick={() => {
+                                user_information['mbti'] = [...user_information['mbti'], "ESTJ"];
+                                }}>ESTJ</button>
                     </div>
                 </div>
                 <div className='addr-input-container'>
@@ -115,24 +183,74 @@ function Signin(props) {
                     <div className='detail-title'>키워드</div>
                     <div className='keyword-content-container'>
                         <div className='mini-title'>키</div>
-                            <input className='height-input'></input>
+                            <input className='height-input'
+                            type="text"
+                            onChange={(event) => user_information['height'] = Number(event.target.value)}></input>
                         <div className='keword-btn-container'>
-                            <button className='dog'>강아지상</button>
-                            <button className='cat'>고양이상</button>
-                            <button className='rabbit'>토끼상</button>
-                            <button className='bear'>곰상</button>
-                            <button className='kind'>다정한</button>
-                            <button className='calm'>차분한</button>
-                            <button className='active'>활발한</button>
-                            <button className='cute'>귀여운</button>
-                            <button className='thin'>마른</button>
-                            <button className='muscle'>근육질</button>
-                            <button className='normal'>보통</button>
-                            <button className='full'>통통한</button>
-                            <button className='game'>게임</button>
-                            <button className='movie'>영화보기</button>
-                            <button className='trip'>여행</button>
-                            <button className='exercise'>운동</button>
+                            <button className='dog'
+                                onClick={() => {
+                                    user_information['keyword'] = [...user_information['keyword'], "강아지상"];
+                                    }}>강아지상</button>
+                            <button className='cat'
+                                onClick={() => {
+                                    user_information['keyword'] = [...user_information['keyword'], "고양이상"];
+                                    }}>고양이상</button>
+                            <button className='rabbit'
+                                onClick={() => {
+                                    user_information['keyword'] = [...user_information['keyword'], "토끼상"];
+                                    }}>토끼상</button>
+                            <button className='bear'
+                                onClick={() => {
+                                    user_information['keyword'] = [...user_information['keyword'], "곰상"];
+                                    }}>곰상</button>
+                            <button className='kind'
+                                onClick={() => {
+                                    user_information['keyword'] = [...user_information['keyword'], "다정한"];
+                                    }}>다정한</button>
+                            <button className='calm'
+                                onClick={() => {
+                                    user_information['keyword'] = [...user_information['keyword'], "차분한"];
+                                    }}>차분한</button>
+                            <button className='active'
+                                onClick={() => {
+                                    user_information['keyword'] = [...user_information['keyword'], "활발한"];
+                                    }}>활발한</button>
+                            <button className='cute'
+                                onClick={() => {
+                                    user_information['keyword'] = [...user_information['keyword'], "귀여운"];
+                                    }}>귀여운</button>
+                            <button className='thin'
+                                onClick={() => {
+                                    user_information['keyword'] = [...user_information['keyword'], "마른"];
+                                    }}>마른</button>
+                            <button className='muscle'
+                                onClick={() => {
+                                    user_information['keyword'] = [...user_information['keyword'], "근육질"];
+                                    }}>근육질</button>
+                            <button className='normal'
+                                onClick={() => {
+                                    user_information['keyword'] = [...user_information['keyword'], "보통"];
+                                    }}>보통</button>
+                            <button className='full'
+                                onClick={() => {
+                                    user_information['keyword'] = [...user_information['keyword'], "통통한"];
+                                    }}>통통한</button>
+                            <button className='game'
+                                onClick={() => {
+                                    user_information['keyword'] = [...user_information['keyword'], "게임"];
+                                    }}>게임</button>
+                            <button className='movie'
+                                onClick={() => {
+                                    user_information['keyword'] = [...user_information['keyword'], "영화보기"];
+                                    }}>영화보기</button>
+                            <button className='trip'
+                                onClick={() => {
+                                    user_information['keyword'] = [...user_information['keyword'], "여행"];
+                                    }}>여행</button>
+                            <button className='exercise'
+                                onClick={() => {
+                                    user_information['keyword'] = [...user_information['keyword'], "운동"];
+                                    }}>운동</button>
                         </div>
                     </div>
                 </div>
@@ -141,7 +259,7 @@ function Signin(props) {
                         type='submit'
                         onClick={() => {
                         navigate("/signin2");
-                        //setSign();
+                        props.getUserData(user_information['id'], user_information['age'], user_information['gender'], user_information['link'], user_information['mbti'], user_information['addr'], user_information['keyword']);
                         }}
                     >
                         다음

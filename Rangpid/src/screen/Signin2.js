@@ -23,8 +23,8 @@ function Signin2(props) {
         setLoc2(sigugunText);
       }
 
-    function sendData(){
-        props.setLocation(loc1+" "+loc2);
+    function sendUserData(){
+        props.getIdealData(loc1+" "+loc2);
     }
 
     return (
@@ -124,11 +124,11 @@ function Signin2(props) {
                     <button className='next-btn'
                         type='submit'
                         onClick={() => {
-                        navigate("/signin2");
+                        navigate("/information");
                         //setSign();
                         }}
                     >
-                        다음
+                        회원 가입하기
                     </button>
                 </div>
             </div>
