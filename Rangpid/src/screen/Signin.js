@@ -22,7 +22,6 @@ function Signin(props) {
         let sigugunSelect = document.getElementById("sigugun");
         let sigugunText = sigugunSelect.options[sigugunSelect.selectedIndex].text;
         user_information['addr'] += sigugunText;
-        console.log(user_information['addr']);
     }
 
     let user_information = {

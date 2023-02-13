@@ -6,7 +6,8 @@ import Login from './screen/Login';
 import Select from './screen/Select';
 import Signin2 from './screen/Signin2';
 import Information from './screen/Information';
-import Information2 from './screen/information2';
+import Information2 from './screen/Information2';
+import Result from './screen/Result';
 import Footer from "./screen/Footer";
 import { useState } from "react";
 
@@ -75,6 +76,7 @@ function App() {
           <Route path="/select" element={<Select login={login}/>}></Route>
           <Route path="/information" element={<Information user={user}/>}></Route>
           <Route path="/information2" element={<Information2 user={user}/>}></Route>
+          <Route path="/result" element={<Result />}></Route>
           <Route path="*" element={<div>404</div>}></Route>
         </Routes>
       </Router>

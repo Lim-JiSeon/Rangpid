@@ -124,7 +124,7 @@ function Signin2(props) {
                     <button className='next-btn'
                         type='submit'
                         onClick={() => {
-                        navigate("/information");
+                        navigate("/select");
                         //setSign();
                         }}
                     >

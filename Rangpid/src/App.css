@@ -129,6 +129,73 @@ input::placeholder {
   font-weight: bold;
 }
 
+.detail-title,
+.id-check-btn {
+  font-size: var(--semi-btn-font-size);
+  font-weight: bold;
+}
+
+.mini-title {
+  font-size: var(--semi-title-font-size);
+  font-weight: bold;
+}
+
+.m-sex,
+.f-sex,
+.enfj, 
+.infj, 
+.intj, 
+.entj, 
+.enfp,
+.infp,
+.intp,
+.entp,
+.esfp,
+.isfp,
+.istp,
+.estp,
+.esfj,
+.isfj,
+.istj,
+.estj {
+  font-size: var(--semi-title-font-size);
+  font-weight: bold;
+  border-radius: 30px;
+  border: none;
+  background-color: var(--content-background-color);
+}
+
+button:focus {
+  background-color: var(--main-background-color);
+}
+
+.service-btn-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.btn-img {
+  width: 150px;
+  height: 100px;
+}
+
+.service-btn {
+  width: 900px;
+  height: 280px;
+  vertical-align: middle;
+  font-size: var(--sub-title-font-size);
+  font-weight: bold;
+  align-items: center;
+  background-color: var(--sub-background-color);
+  border-radius: 30px;
+  border-color: #311D00;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+
 footer{
   width: 100%;
   height: 77px;
