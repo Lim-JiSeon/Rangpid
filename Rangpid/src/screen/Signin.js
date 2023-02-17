@@ -4,6 +4,7 @@ import { hangjungdong } from "../data/Hangjungdong";
 import { useState } from "react";
 
 function Signin(props) {
+
     let navigate = useNavigate();
     const { sido, sigugun, dong } = hangjungdong;
     
@@ -46,6 +47,7 @@ function Signin(props) {
                         <div className='mini-title'>아이디</div>
                         <input className='id-input'
                             type="text"
+                            name="username"
                             onChange={(event) => user_information['id'] = event.target.value}></input>
                         <button className='id-check-btn'>중복확인</button>
                     </div>
@@ -53,15 +55,18 @@ function Signin(props) {
                         <div className='mini-title'>나이</div>
                         <input className='age-input'
                             type="text"
+                            name="age"
                             onChange={(event) =>user_information['age'] = Number(event.target.value)}></input>
                     </div>
                     <div className='sex-input-container'>
                         <div className='mini-title'>성별</div>
                         <button className='m-sex'
+                            name="gender"
                             onClick={() => {
                                 user_information['gender'] = 'male'
                                 }}>남성</button>
                         <button className='f-sex'
+                            name="gender"
                             onClick={() => {
                                 user_information['gender'] = 'female'
                                 }}>여성</button>
@@ -70,6 +75,7 @@ function Signin(props) {
                         <div className='mini-title'>오픈채팅 링크</div>
                         <input className='link-input'
                             type="text"
+                            name="link"
                             onChange={(event) => user_information['link'] = event.target.value}></input>
                         <div className='detail-content'>
                             *매칭 후 상대방에게 전달될 오픈채팅방 링크입니다. 카카오톡 오픈채팅 방을 만든 뒤 링크를 작성해주세요. 
@@ -80,66 +86,82 @@ function Signin(props) {
                     <div className='detail-title'>성격(MBTI)</div>
                     <div className='mbti-btn-container'>
                         <button className='enfj' 
+                            name="mbti"
                             onClick={() => {
                                 user_information['mbti'] = "ENFJ";
                                 }}>ENFJ</button>
                         <button className='infj'
+                            name="mbti"
                             onClick={() => {
                                 user_information['mbti'] = "INFJ";
                                 }}>INFJ</button>
                         <button className='intj'
+                            name="mbti"
                             onClick={() => {
                                 user_information['mbti'] = "INTJ";
                                 }}>INTJ</button>
                         <button className='entj'
+                            name="mbti"
                             onClick={() => {
                                 user_information['mbti'] = "ENTJ";
                                 }}>ENTJ</button>
                         <button className='enfp'
+                            name="mbti"
                             onClick={() => {
                                 user_information['mbti'] = "ENFP";
                                 }}>ENFP</button>
                         <button className='infp'
+                            name="mbti"
                             onClick={() => {
                                 user_information['mbti'] = "INFP";
                                 }}>INFP</button>
                         <button className='intp'
+                            name="mbti"
                             onClick={() => {
                                 user_information['mbti'] = "INTP";
                                 }}>INTP</button>
                         <button className='entp'
+                            name="mbti"
                             onClick={() => {
                                 user_information['mbti'] = "ENTP";
                                 }}>ENTP</button>
                         <button className='esfp'
+                            name="mbti"
                             onClick={() => {
                                 user_information['mbti'] = "ESFP";
                                 }}>ESFP</button>
                         <button className='isfp'
+                            name="mbti"
                             onClick={() => {
                                 user_information['mbti'] = "ISFP";
                                 }}>ISFP</button>
                         <button className='istp'
+                            name="mbti"
                             onClick={() => {
                                 user_information['mbti'] = "ISTP";
                                 }}>ISTP</button>
                         <button className='estp'
+                            name="mbti"
                             onClick={() => {
                                 user_information['mbti'] = "ESTP";
                                 }}>ESTP</button>
                         <button className='esfj'
+                            name="mbti"
                             onClick={() => {
                                 user_information['mbti'] = "ESFJ";
                                 }}>ESFJ</button>
                         <button className='isfj'
+                            name="mbti"
                             onClick={() => {
                                 user_information['mbti'] = "ISFJ";
                                 }}>ISFJ</button>
                         <button className='istj'
+                            name="mbti"
                             onClick={() => {
                                 user_information['mbti'] = "ISTJ";
                                 }}>ISTJ</button>
                         <button className='estj'
+                            name="mbti"
                             onClick={() => {
                                 user_information['mbti'] = "ESTJ";
                                 }}>ESTJ</button>
@@ -150,6 +172,7 @@ function Signin(props) {
                     <div className="select-container">
                         <div className="select-address">
                             <select id="sido" 
+                            name="residence"
                             onChange={(e) => {
                                 setVal1(e.target.value);
                                 selectSidoText();
@@ -165,6 +188,7 @@ function Signin(props) {
 
                         <div className="select-address">     
                             <select id="sigugun" 
+                            name="residence"
                             onChange={(e) => {
                                 setVal2(e.target.value);
                                 selectSigugunText();
@@ -187,69 +211,86 @@ function Signin(props) {
                         <div className='mini-title'>키</div>
                             <input className='height-input'
                             type="text"
+                            name="height"
                             onChange={(event) => user_information['height'] = Number(event.target.value)}></input>
                         <div className='keword-btn-container'>
                             <button className='dog'
+                                name="keyword"
                                 onClick={() => {
                                     user_information['keyword'] = [...user_information['keyword'], "강아지상"];
                                     }}>강아지상</button>
                             <button className='cat'
+                                name="keyword"
                                 onClick={() => {
                                     user_information['keyword'] = [...user_information['keyword'], "고양이상"];
                                     }}>고양이상</button>
                             <button className='rabbit'
+                                name="keyword"
                                 onClick={() => {
                                     user_information['keyword'] = [...user_information['keyword'], "토끼상"];
                                     }}>토끼상</button>
                             <button className='bear'
+                                name="keyword"
                                 onClick={() => {
                                     user_information['keyword'] = [...user_information['keyword'], "곰상"];
                                     }}>곰상</button>
                             <button className='kind'
+                                name="keyword"
                                 onClick={() => {
                                     user_information['keyword'] = [...user_information['keyword'], "다정한"];
                                     }}>다정한</button>
                             <button className='calm'
+                                name="keyword"
                                 onClick={() => {
                                     user_information['keyword'] = [...user_information['keyword'], "차분한"];
                                     }}>차분한</button>
                             <button className='active'
+                                name="keyword"
                                 onClick={() => {
                                     user_information['keyword'] = [...user_information['keyword'], "활발한"];
                                     }}>활발한</button>
                             <button className='cute'
+                                name="keyword"
                                 onClick={() => {
                                     user_information['keyword'] = [...user_information['keyword'], "귀여운"];
                                     }}>귀여운</button>
                             <button className='thin'
+                                name="keyword"
                                 onClick={() => {
                                     user_information['keyword'] = [...user_information['keyword'], "마른"];
                                     }}>마른</button>
                             <button className='muscle'
+                                name="keyword"
                                 onClick={() => {
                                     user_information['keyword'] = [...user_information['keyword'], "근육질"];
                                     }}>근육질</button>
                             <button className='normal'
+                                name="keyword"
                                 onClick={() => {
                                     user_information['keyword'] = [...user_information['keyword'], "보통"];
                                     }}>보통</button>
                             <button className='full'
+                                name="keyword"
                                 onClick={() => {
                                     user_information['keyword'] = [...user_information['keyword'], "통통한"];
                                     }}>통통한</button>
                             <button className='game'
+                                name="keyword"
                                 onClick={() => {
                                     user_information['keyword'] = [...user_information['keyword'], "게임"];
                                     }}>게임</button>
                             <button className='movie'
+                                name="keyword"
                                 onClick={() => {
                                     user_information['keyword'] = [...user_information['keyword'], "영화보기"];
                                     }}>영화보기</button>
                             <button className='trip'
+                                name="keyword"
                                 onClick={() => {
                                     user_information['keyword'] = [...user_information['keyword'], "여행"];
                                     }}>여행</button>
                             <button className='exercise'
+                                name="keyword"
                                 onClick={() => {
                                     user_information['keyword'] = [...user_information['keyword'], "운동"];
                                     }}>운동</button>

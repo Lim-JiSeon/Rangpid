@@ -6,7 +6,7 @@ import Login from './screen/Login';
 import Select from './screen/Select';
 import Signin2 from './screen/Signin2';
 import Information from './screen/Information';
-import Information2 from './screen/Information2';
+import Information2 from './screen/information2';
 import Result from './screen/Result';
 import Footer from "./screen/Footer";
 import { useState } from "react";
