@@ -1,0 +1,213 @@
+:root {
+  --main-background-color : #F0E5FF;
+  --sub-background-color : #FDF4FF;
+  --content-background-color : #F2F2F2;
+  --main-txt-color : #000000;
+  --sub-txt-color : #FFFFFF;
+  --hint-txt-color : #979797;
+
+  --title-font-size : 63px;
+  --sub-title-font-size : 54px;
+  --semi-btn-font-size : 36px;
+  --semi-title-font-size : 32px;
+  --semi-content-font-size : 24px;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.container{
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#container-contents {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.main-img {
+  text-align: center;
+  width: 448px;
+  height: auto;
+}
+
+.title {
+  background-color: var(--main-background-color);
+  width: 952px;
+  height: 142px;
+  text-align: center;
+  line-height: 142px;
+  font-size: var(--title-font-size);
+  font-weight: bolder;
+}
+
+.sub-title {
+  background-color: var(--main-background-color);
+  width: 696px;
+  height: 142px;
+  text-align: center;
+  border-radius: 30px;
+  font-size: var(--title-font-size);
+  line-height: 142px;
+  font-weight: bolder;
+  position: absolute;
+  clear: left;
+  float: left;
+  top: 10px;
+}
+
+.btn-container {
+  width: 100%;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+}
+
+.join-container,
+.login-container {
+  flex: 1;
+  text-align: center;
+  line-height: 300px;
+}
+
+.start-btn,
+.join-btn,
+.login-btn {
+  width: 424px;
+  height: 142px;
+  background-color: var(--main-background-color);
+  border: 3px solid var(--main-txt-color);
+  border-radius: 20px;
+  font-size: var(--sub-title-font-size);
+  color: var(--main-txt-color);
+  font-weight: bold;
+}
+
+.log-in-btn {
+  width: 277px;
+  height: 91px;
+  background-color: var(--main-background-color);
+  border: 3px solid var(--main-txt-color);
+  border-radius: 20px;
+  font-size: var(--semi-btn-font-size);
+  color: var(--main-txt-color);
+  font-weight: bold;
+}
+
+.login-input-container {
+  height: 200px;
+  text-align: center;
+  line-height: 200px;
+}
+
+.login-input {
+  width: 1048px;
+  height: 131px;
+  border: none;
+  background-color: var(--content-background-color);
+  border-radius: 30px;
+  color: var(--main-txt-color);
+  font-size: var(--semi-btn-font-size);
+  text-align: center;
+}
+
+input::placeholder {
+  text-align: center;
+  font-size: var(--semi-btn-font-size);
+  color: var(--hint-txt-color);
+  font-weight: bold;
+}
+
+.detail-title,
+.id-check-btn {
+  font-size: var(--semi-btn-font-size);
+  font-weight: bold;
+}
+
+.mini-title {
+  font-size: var(--semi-title-font-size);
+  font-weight: bold;
+}
+
+.m-sex,
+.f-sex,
+.enfj, 
+.infj, 
+.intj, 
+.entj, 
+.enfp,
+.infp,
+.intp,
+.entp,
+.esfp,
+.isfp,
+.istp,
+.estp,
+.esfj,
+.isfj,
+.istj,
+.estj {
+  font-size: var(--semi-title-font-size);
+  font-weight: bold;
+  border-radius: 30px;
+  border: none;
+  background-color: var(--content-background-color);
+}
+
+button:focus {
+  background-color: var(--main-background-color);
+}
+
+.service-btn-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.btn-img {
+  width: 150px;
+  height: 100px;
+}
+
+.service-btn {
+  width: 900px;
+  height: 280px;
+  vertical-align: middle;
+  font-size: var(--sub-title-font-size);
+  font-weight: bold;
+  align-items: center;
+  background-color: var(--sub-background-color);
+  border-radius: 30px;
+  border-color: #311D00;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+
+footer{
+  width: 100%;
+  height: 77px;
+  line-height: 77px;
+  position: absolute;
+  clear: left;
+  float: left;
+  left: 0;
+  bottom: 0px;
+  background-color: var(--main-background-color);
+  color: var(--sub-txt-color);
+  font-weight: bold;
+  text-align: center;
+  font-size: var(--semi-content-font-size);
+}
