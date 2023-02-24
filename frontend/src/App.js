@@ -1,10 +1,10 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Service from './screen/Service';
 import Main from './screen/Main';
-import Signin from './screen/Signin';
+import Signup from './screen/SignUp/Signup';
 import Login from './screen/Login';
 import Select from './screen/Select';
-import Signin2 from './screen/Signin2';
+import Signup2 from './screen/SignUp/Signup2';
 import Information from './screen/Information';
 import Information2 from './screen/Information2';
 import Result from './screen/Result';
@@ -70,8 +70,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Main />}></Route>
           <Route path="/service" element={<Service />}></Route>
-          <Route path="/signin" element={<Signin getUserData={getUserData}/>}></Route>
-          <Route path="/signin2" element={<Signin2 getIdealData={getIdealData}/>}></Route>
+          <Route path="/signup" element={<Signup getUserData={getUserData}/>}></Route>
+          <Route path="/signup2" element={<Signup2 getIdealData={getIdealData}/>}></Route>
           <Route path="/login" element={<Login getLogin={getLogin}/>}></Route>
           <Route path="/select" element={<Select login={login}/>}></Route>
           <Route path="/information" element={<Information user={user}/>}></Route>

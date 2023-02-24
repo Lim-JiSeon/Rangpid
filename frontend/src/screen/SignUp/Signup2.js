@@ -1,9 +1,9 @@
-import '../App.css';
+import style from "./Signup.module.css";
 import { useNavigate } from "react-router-dom"; 
-import { hangjungdong } from "../data/Hangjungdong";
+import { hangjungdong } from "../../data/Hangjungdong";
 import { useState } from "react";
 
-function Signin2(props) {
+function Signup2(props) {
     let navigate = useNavigate();
     const { sido, sigugun, dong } = hangjungdong;
     
@@ -125,7 +125,6 @@ function Signin2(props) {
                         type='submit'
                         onClick={() => {
                         navigate("/select");
-                        //setSign();
                         }}
                     >
                         회원 가입하기
@@ -137,4 +136,4 @@ function Signin2(props) {
     );
 }
 
-export default Signin2;
+export default Signup2;

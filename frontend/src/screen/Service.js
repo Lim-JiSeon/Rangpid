@@ -15,7 +15,7 @@ function Service() {
               <button className='join-btn'
                 type='button'
                 onClick={() => {
-                  navigate("/signin");
+                  navigate("/signup");
                 }}
               >
                 회원가입
