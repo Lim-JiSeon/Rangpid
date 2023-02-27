@@ -8,7 +8,6 @@ const getToken = (user) => {
         age: user.age,
         gender: user.gender,
         link: user.link,
-        matchedLink: user.matchedLink,
         mbti: user.mbti,
         residence: user.residence,
         height: user.height,
@@ -18,7 +17,10 @@ const getToken = (user) => {
         idealResidence: user.idealResidence,
         idealHeight: user.idealHeight,
         idealKeyword: user.idealKeyword,
+        idealScore: user.idealScore,
+        coupleScore: user.coupleScore,
         matchingScore: user.matchingScore,
+        matchedLink: user.matchedLink,
     })
 }
 
