@@ -2,7 +2,7 @@ import style from "./Signup.module.css";
 import { useNavigate } from "react-router-dom"; 
 import { hangjungdong } from "../../data/Hangjungdong";
 import { useState } from "react";
-import Footer from "../Footer";
+import axios from 'axios';
 
 function Signup(props) {
     let navigate = useNavigate();
@@ -36,6 +36,11 @@ function Signup(props) {
         addr : "",
         keyword : [],
     };
+
+
+    axios.get('https://localhost:5000/api')
+        .then(response => console.log(response.data))
+        .catch(error => console.error(error));
 
     return (
         <div className={style.wrap}>
@@ -268,7 +273,6 @@ function Signup(props) {
                         type='submit'
                         onClick={() => {
                         navigate("/signup2");
-                        console.log(user_information['addr']);
                         props.getUserData(user_information['id'], user_information['age'], user_information['height'], user_information['gender'], user_information['link'], user_information['mbti'], user_information['addr'], user_information['keyword']);
                         }}
                     >
