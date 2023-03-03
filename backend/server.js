@@ -10,7 +10,8 @@ dotenv.config();
 const mongodbUrl = config.DB_URL;
 mongoose.set("strictQuery", false);
 mongoose.connect(mongodbUrl, {
-    useNewUrlParser: true
+    useNewUrlParser: true,
+    useUnifiedTopology: true
 }).catch(error => console.log(error.reason));
 
 const db = mongoose.connection; //connection 인스턴스 생성
