@@ -1,4 +1,4 @@
-import style from "./Signup.module.css";
+import style from "./Signup2.module.css";
 import { useNavigate } from "react-router-dom"; 
 import { hangjungdong } from "../../data/Hangjungdong";
 import { useState } from "react";
@@ -28,42 +28,44 @@ function Signup2(props) {
     }
 
     return (
-        <div className="wrap">
-        <div className='container'>
-            <div id='container-contents'>
-                <div className='sub-title'>회원 가입</div>
-                <div className='ideal-age-input-container'>
-                    <div className='mini-title'>이상형 나이</div>
-                    <input className='ideal-age-input'
+        <div className={style.wrap}>
+        <div className={style.container}>
+            <div className={style.titleContainer}>
+                <div className={style.subTitle}>회원 가입</div>
+            </div>
+            <div id={style.containerContents}>
+                <div className={style.idealAgeInputContainer}>
+                    <div className={style.detailTitle}>이상형 나이</div>
+                    <input className={style.idealAgeInput}
                         type='range'
                     ></input>
                 </div>
-                <div className='mbti-input-container'>
-                    <div className='detail-title'>이상형 성격(MBTI)</div>
-                    <div className='mbti-btn-container'>
-                        <button className='ideal-enfj'>ENFJ</button>
-                        <button className='ideal-infj'>INFJ</button>
-                        <button className='ideal-intj'>INTJ</button>
-                        <button className='ideal-entj'>ENTJ</button>
-                        <button className='ideal-enfp'>ENFP</button>
-                        <button className='ideal-infp'>INFP</button>
-                        <button className='ideal-intp'>INTP</button>
-                        <button className='ideal-entp'>ENTP</button>
-                        <button className='ideal-esfp'>ESFP</button>
-                        <button className='ideal-isfp'>ISFP</button>
-                        <button className='ideal-istp'>ISTP</button>
-                        <button className='ideal-estp'>ESTP</button>
-                        <button className='ideal-esfj'>ESFJ</button>
-                        <button className='ideal-isfj'>ISFJ</button>
-                        <button className='ideal-istj'>ISTJ</button>
-                        <button className='ideal-estj'>ESTJ</button>
+                <div className={style.mbtiInputContainer}>
+                    <div className={style.detailTitle}>이상형 성격(MBTI)</div>
+                    <div className={style.mbtiBtnContainer}>
+                        <button className={style.idealEnfj}>ENFJ</button>
+                        <button className={style.idealInfj}>INFJ</button>
+                        <button className={style.idealIntj}>INTJ</button>
+                        <button className={style.idealEntj}>ENTJ</button>
+                        <button className={style.idealEnfp}>ENFP</button>
+                        <button className={style.idealInfp}>INFP</button>
+                        <button className={style.idealIntp}>INTP</button>
+                        <button className={style.idealEntp}>ENTP</button>
+                        <button className={style.idealEsfp}>ESFP</button>
+                        <button className={style.idealIsfp}>ISFP</button>
+                        <button className={style.idealIstp}>ISTP</button>
+                        <button className={style.idealEstp}>ESTP</button>
+                        <button className={style.idealEsfj}>ESFJ</button>
+                        <button className={style.idealIsfj}>ISFJ</button>
+                        <button className={style.idealIstj}>ISTJ</button>
+                        <button className={style.idealEstj}>ESTJ</button>
                     </div>
                 </div>
-                <div className='addr-input-container'>
-                    <div className='detail-title'>이상형 거주지</div>
-                    <div className="select-container">
-                        <div className="select-address">
-                            <select id="ideal-sido" onChange={(e) => {
+                <div className={style.addrInputContainer}>
+                    <div className={style.detailTitle}>이상형 거주지</div>
+                    <div className={style.selectContainer}>
+                        <div className={style.selectAddress}>
+                            <select id={style.idealSido} onChange={(e) => {
                             setVal1(e.target.value)
                             selectText()
                             }}>
@@ -76,8 +78,8 @@ function Signup2(props) {
                             </select>
                         </div>
 
-                        <div className="select-address">     
-                            <select id="ideal-sigugun" onChange={(e) => {
+                        <div className={style.selectAddress}>     
+                            <select id={style.idealSigugun} onChange={(e) => {
                             setVal2(e.target.value)
                             selectText()
                             }}>
@@ -93,45 +95,50 @@ function Signup2(props) {
                         </div>
                     </div>
                 </div>
-                <div className='keyword-input-container'>
-                    <div className='detail-title'>키워드</div>
-                    <div className='keyword-content-container'>
-                        <div className='mini-title'>키</div>
-                            <input className='ideal-height-input'
+                <div className={style.keywordInputContainer}>
+                    <div className={style.detailTitle}>키워드</div>
+                    <div className={style.heightInputContainer}>
+                        <div className={style.detailTitle}>키</div>
+                            <input className={style.idealHeightInput}
                                 type='range'
-                            ></input>
-                        <div className='keword-btn-container'>
-                            <button className='ideal-dog'>강아지상</button>
-                            <button className='ideal-cat'>고양이상</button>
-                            <button className='ideal-rabbit'>토끼상</button>
-                            <button className='ideal-bear'>곰상</button>
-                            <button className='ideal-kind'>다정한</button>
-                            <button className='ideal-calm'>차분한</button>
-                            <button className='ideal-active'>활발한</button>
-                            <button className='ideal-cute'>귀여운</button>
-                            <button className='ideal-thin'>마른</button>
-                            <button className='ideal-muscle'>근육질</button>
-                            <button className='ideal-normal'>보통</button>
-                            <button className='ideal-full'>통통한</button>
-                            <button className='ideal-game'>게임</button>
-                            <button className='ideal-movie'>영화보기</button>
-                            <button className='ideal-trip'>여행</button>
-                            <button className='ideal-exercise'>운동</button>
+                            ></input>   
+                    </div>
+                    <div className={style.keywordContentContainer}>
+                        <div className={style.keywordBtnContainer}>
+                            <button className={style.idealDog}>강아지상</button>
+                            <button className={style.idealCat}>고양이상</button>
+                            <button className={style.idealRabbit}>토끼상</button>
+                            <button className={style.idealBear}>곰상</button>
+                            <button className={style.idealKind}>다정한</button>
+                            <button className={style.idealCalm}>차분한</button>
+                            <button className={style.idealActive}>활발한</button>
+                            <button className={style.idealCute}>귀여운</button>
+                            <button className={style.idealThin}>마른</button>
+                            <button className={style.idealMuscle}>근육질</button>
+                            <button className={style.idealNormal}>보통</button>
+                            <button className={style.idealFull}>통통한</button>
+                            <button className={style.idealGame}>게임</button>
+                            <button className={style.idealMovie}>영화보기</button>
+                            <button className={style.idealTrip}>여행</button>
+                            <button className={style.idealExercise}>운동</button>
                         </div>
                     </div>
                 </div>
-                <div className='next-container'>
-                    <button className='next-btn'
-                        type='submit'
-                        onClick={() => {
-                        navigate("/select");
-                        }}
-                    >
-                        회원 가입하기
-                    </button>
-                </div>
+            </div>
+            <div className={style.nextContainer}>
+                <button className={style.nextBtn}
+                    type='submit'
+                    onClick={() => {
+                    navigate("/select");
+                    }}
+                >
+                    회원 가입하기
+                </button>
             </div>
         </div>
+        <footer>
+            랑피드
+        </footer>
         </div>
     );
 }

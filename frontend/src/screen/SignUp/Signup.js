@@ -38,7 +38,7 @@ function Signup(props) {
     };
 
 
-    axios.get('https://localhost:5000/api')
+    axios.get('https://localhost:5000')
         .then(response => console.log(response.data))
         .catch(error => console.error(error));
 
@@ -52,11 +52,10 @@ function Signup(props) {
                 <div className={style.infoInputContainer}>
                     <div className={style.detailTitle}>정보 입력</div>
                     <div className={style.idInputContainer}>
-                        <div className={style.miniTitle}>아이디</div>
+                        <div className={style.miniTitle}>카톡 아이디</div>
                         <input className={style.idInput}
                             type="text"
                             onChange={(event) => user_information['id'] = event.target.value}></input>
-                        <button className={style.idCheckBtn}>중복확인</button>
                     </div>
                     <div className={style.ageInputContainer}>
                         <div className={style.miniTitle}>나이</div>
@@ -74,15 +73,6 @@ function Signup(props) {
                             onClick={() => {
                                 user_information['gender'] = 'female'
                                 }}>여성</button>
-                    </div>
-                    <div className={style.linkInputContainer}>
-                        <div className={style.miniTitle}>오픈채팅 링크</div>
-                        <input className={style.linkInput}
-                            type="text"
-                            onChange={(event) => user_information['link'] = event.target.value}></input>
-                    </div>
-                    <div className={style.detailContent}>
-                        *매칭 후 상대방에게 전달될 오픈채팅방 링크입니다. 카카오톡 오픈채팅 방을 만든 뒤 링크를 작성해주세요. 
                     </div>
                 </div>
                 <div className={style.mbtiInputContainer}>

@@ -64,10 +64,10 @@ html, body {
     top: 30px;
 }
 
-.detailTitle,
-.idCheckBtn {
+.detailTitle {
   font-size: var(--semi-btn-font-size);
   font-weight: bold;
+  margin-bottom: 30px;
 }
 
 .miniTitle {
@@ -90,7 +90,6 @@ html, body {
 .idInputContainer,
 .ageInputContainer,
 .sexInputContainer,
-.linkInputContainer,
 .heightInputContainer {
     display: flex;
     width: 1000px;
@@ -111,38 +110,11 @@ html, body {
     text-align: center;
 }
 
-.linkInput {
-    width: 840px;
-    height: 74px;
-    background-color: var(--content-background-color);
-    border: none;
-    border-radius: 30px;
-    font-size: var(--semi-title-font-size);
-    margin-left: 100px;
-    text-align: center;
-}
-
-.detailContent {
+/*.detailContent {
     font-size: var(--semi-content-font-size);
     margin-top: 10px;
     font-weight: bold;
-}
-
-.idInput {
-    margin-left: 140px;
-}
-
-.idCheckBtn {
-    width: 196px;
-    height: 72px;
-    background-color: var(--main-background-color);
-    border: 3px solid var(--main-txt-color);
-    border-radius: 20px;
-    font-size: var(--semi-btn-font-size);
-    color: var(--main-txt-color);
-    font-weight: bold;
-    margin-left: 80px;
-}
+}*/
 
 .mSex,
 .fSex {
