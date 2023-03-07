@@ -1,12 +1,35 @@
 import '../App.css';
+import { useEffect, useInsertionEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom"; 
+import { signin } from "../actions/userActions";
+
 
 function Login(props) {
     let navigate = useNavigate();
     
+    const [id, setId] = useState("");
+    const userSignin = useSelector(state => state.userSignin);
+    const { loading, userInfo, error } = userSignin;
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        if (userInfo) {
+            props.history.push("/");
+        }
+        return () => {
+
+        };
+    }, [userInfo]);
+
+
     function setLogin() {
         let idText = document.getElementById("login-input-txt").value;
         props.getLogin(idText);
+    }
+
+    const submitHandler = (e) => {
+        e.preventDefault();
+        dispatchEvent(signin(id));
     }
 
     return (
@@ -14,11 +37,16 @@ function Login(props) {
         <div className='container'>
             <div id='container-contents'>
                 <div className='sub-title'>로그인</div>
+                <div>
+                    {loading && <div>Loading...</div>}
+                    {error && <div>{error}</div>}
+                </div>
                 <div className='login-input-container'>
                     <input className='login-input'
                         type='text'
                         id='login-input-txt'
                         placeholder='아이디를 입력해주세요.'
+                        onChange={(e) => setId(e.target.value)}
                     ></input>
                 </div>
                 <div className='log-in-container'>
@@ -37,5 +65,6 @@ function Login(props) {
         </div>
     );
 }
+import { formToJSON } from 'axios';
 
 export default Login;

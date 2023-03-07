@@ -1,10 +1,10 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Service from './screen/Service';
 import Main from './screen/Main';
-import Signup from './screen/SignUp/Signup';
+import Register from './screen/Register/Register';
 import Login from './screen/Login';
 import Select from './screen/Select';
-import Signup2 from './screen/SignUp/Signup2';
+import Register2 from './screen/Register/Register2';
 import Information from './screen/Information';
 import Information2 from './screen/Information2';
 import Result from './screen/Result';
@@ -25,6 +25,10 @@ function App() {
   const [idealmbti, setidealMbti] = useState([]);
   const [idealaddr, setidealAddr] = useState("");
   const [idealkeyword, setIdealkeyword] = useState([]);
+
+
+  const userSignin = userSelector(state => state.userSignin);
+  const {userInfo} = userSignin;
 
   function getLogin(id) {
     setLogin(id);      
@@ -70,8 +74,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Main />}></Route>
           <Route path="/service" element={<Service />}></Route>
-          <Route path="/signup" element={<Signup getUserData={getUserData}/>}></Route>
-          <Route path="/signup2" element={<Signup2 getIdealData={getIdealData}/>}></Route>
+          <Route path="/register" element={<Register getUserData={getUserData}/>}></Route>
+          <Route path="/register2" element={<Register2 getIdealData={getIdealData}/>}></Route>
           <Route path="/login" element={<Login getLogin={getLogin}/>}></Route>
           <Route path="/select" element={<Select login={login}/>}></Route>
           <Route path="/information" element={<Information user={user}/>}></Route>
