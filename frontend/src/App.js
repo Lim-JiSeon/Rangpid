@@ -8,7 +8,6 @@ import Register2 from './screen/Register/Register2';
 import Information from './screen/Information';
 import Information2 from './screen/Information2';
 import Result from './screen/Result';
-import Footer from "./screen/Footer";
 import { useState } from "react";
 
 function App() {
@@ -27,8 +26,8 @@ function App() {
   const [idealkeyword, setIdealkeyword] = useState([]);
 
 
-  const userSignin = userSelector(state => state.userSignin);
-  const {userInfo} = userSignin;
+  //const userSignin = userSelector(state => state.userSignin);
+  //const {userInfo} = userSignin;
 
   function getLogin(id) {
     setLogin(id);      
@@ -68,8 +67,6 @@ function App() {
 
   return (
     <div className="App">
-      <Footer></Footer>
-      
       <Router>
         <Routes>
           <Route path="/" element={<Main />}></Route>

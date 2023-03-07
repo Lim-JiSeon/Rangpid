@@ -4,7 +4,7 @@ import { hangjungdong } from "../../data/Hangjungdong";
 import { useState } from "react";
 import axios, { formToJSON } from 'axios';
 
-function Signup(props) {
+function Register(props) {
     let navigate = useNavigate();
     const { sido, sigugun, dong } = hangjungdong;
     
@@ -38,7 +38,7 @@ function Signup(props) {
     };
 
 
-    axios.get('https://localhost:5000')
+    axios.get('http://localhost:5000/api/users/createadmin')
         .then(response => console.log(response.data))
         .catch(error => console.error(error));
 
@@ -262,7 +262,7 @@ function Signup(props) {
                     <button className={style.nextBtn}
                         type='submit'
                         onClick={() => {
-                        navigate("/signup2");
+                        navigate("/register2");
                         props.getUserData(user_information['id'], user_information['age'], user_information['height'], user_information['gender'], user_information['link'], user_information['mbti'], user_information['addr'], user_information['keyword']);
                         }}
                     >
@@ -277,4 +277,4 @@ function Signup(props) {
     );
 }
 
-export default Signup;
+export default Register;

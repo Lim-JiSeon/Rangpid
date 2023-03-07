@@ -133,6 +133,9 @@ function Information2(props) {
                 </div>
             </div>
         </div>
+        <footer>
+            랑피드
+        </footer>
         </div>
     );
 }

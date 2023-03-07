@@ -15,7 +15,7 @@ function Service() {
               <button className='join-btn'
                 type='button'
                 onClick={() => {
-                  navigate("/signup");
+                  navigate("/register");
                 }}
               >
                 회원가입
@@ -25,7 +25,7 @@ function Service() {
               <button className='login-btn'
                 type='button'
                 onClick={() => {
-                  navigate("/login");
+                  navigate("/signin");
                 }}
               >
                 로그인
@@ -34,6 +34,9 @@ function Service() {
           </div>
         </div>
       </div>
+      <footer>
+        랑피드
+      </footer>
     </div>
   );
 }

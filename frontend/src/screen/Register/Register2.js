@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { hangjungdong } from "../../data/Hangjungdong";
 import { useState } from "react";
 
-function Signup2(props) {
+function Register2(props) {
     let navigate = useNavigate();
     const { sido, sigugun, dong } = hangjungdong;
     const gap = 10;
@@ -200,4 +200,4 @@ function Signup2(props) {
     );
 }
 
-export default Signup2;
+export default Register2;

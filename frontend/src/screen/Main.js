@@ -18,6 +18,9 @@ function Main() {
                     시작하기
                 </button>
             </div>
+            <footer>
+                랑피드
+            </footer>
         </div>
     );
 }

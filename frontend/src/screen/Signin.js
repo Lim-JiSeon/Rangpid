@@ -7,7 +7,7 @@ import { signin } from "../actions/userActions";
 function Signin(props) {
     let navigate = useNavigate();
     
-    const [id, setId] = useState("");
+    /*const [id, setId] = useState("");
     const userSignin = useSelector(state => state.userSignin);
     const { loading, userInfo, error } = userSignin;
     const dispatch = useDispatch();
@@ -31,22 +31,21 @@ function Signin(props) {
         e.preventDefault();
         dispatchEvent(signin(id));
     }
-
+*/
     return (
         <div className="wrap">
         <div className='container'>
             <div id='container-contents'>
                 <div className='sub-title'>로그인</div>
                 <div>
-                    {loading && <div>Loading...</div>}
-                    {error && <div>{error}</div>}
+                    
                 </div>
                 <div className='login-input-container'>
                     <input className='login-input'
                         type='text'
                         id='login-input-txt'
                         placeholder='아이디를 입력해주세요.'
-                        onChange={(e) => setId(e.target.value)}
+                        
                     ></input>
                 </div>
                 <div className='log-in-container'>
@@ -54,7 +53,7 @@ function Signin(props) {
                         type='submit'
                         onClick={() => {
                         navigate("/select");
-                        setLogin();
+                        //setLogin();
                         }}
                     >
                         로그인하기
@@ -62,9 +61,12 @@ function Signin(props) {
                 </div>
             </div>
         </div>
+        <footer>
+            랑피드
+        </footer>
         </div>
     );
 }
-import { formToJSON } from 'axios';
+//import { formToJSON } from 'axios';
 
 export default Signin;
