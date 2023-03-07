@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { signin } from "../actions/userActions";
 
 
-function Login(props) {
+function Signin(props) {
     let navigate = useNavigate();
     
     const [id, setId] = useState("");
@@ -67,4 +67,4 @@ function Login(props) {
 }
 import { formToJSON } from 'axios';
 
-export default Login;
+export default Signin;
