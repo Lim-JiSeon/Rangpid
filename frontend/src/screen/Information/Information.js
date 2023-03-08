@@ -3,37 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { hangjungdong } from "../../data/Hangjungdong";
 import { useState } from "react";
 
-function Information(props) {
+function Information() {
     let navigate = useNavigate();
-    const { sido, sigugun, dong } = hangjungdong;
-    
-    const [val1, setVal1] = useState("");
-    const [val2, setVal2] = useState("");
-
-    function selectSidoText() {
-        let sidoSelect = document.getElementById("sido");
-        let sidoText = sidoSelect.options[sidoSelect.selectedIndex].text;
-        user_information['addr'] = sidoText;
-        console.log(user_information['addr']);
-    }
-
-    function selectSigugunText() {
-        let sigugunSelect = document.getElementById("sigugun");
-        let sigugunText = sigugunSelect.options[sigugunSelect.selectedIndex].text;
-        user_information['addr'] += sigugunText;
-        console.log(user_information['addr']);
-    }
-
-    let user_information = {
-        id : "",
-        age : 0,
-        height : 0,
-        gender : "male",
-        link : "",
-        mbti : [],
-        addr : "",
-        keyword : [],
-    };
 
     return (
         <div className={style.wrap}>
@@ -48,99 +19,63 @@ function Information(props) {
                         <div className={style.miniTitle}>카톡 아이디</div>
                         <input className={style.idInput}
                             type="text"
-                            onChange={(event) => user_information['id'] = event.target.value}></input>
+                        ></input>
                     </div>
                     <div className={style.ageInputContainer}>
                         <div className={style.miniTitle}>나이</div>
                         <input className={style.ageInput}
                             type="text"
-                            onChange={(event) =>user_information['age'] = Number(event.target.value)}></input>
+                        ></input>
                     </div>
                     <div className={style.sexInputContainer}>
                         <div className={style.miniTitle}>성별</div>
                         <button className={style.mSex}
-                            onClick={() => {
-                                user_information['gender'] = 'male'
-                                }}>남성</button>
+                        >남성</button>
                         <button className={style.fSex}
-                            onClick={() => {
-                                user_information['gender'] = 'female'
-                                }}>여성</button>
+                        >여성</button>
                     </div>
                     <div className={style.heightInputContainer}>
                         <div className={style.miniTitle}>키</div>
                             <input className={style.heightInput}
                             type="text"
-                            onChange={(event) => user_information['height'] = Number(event.target.value)}></input>
+                        ></input>
                     </div>
                 </div>
                 <div className={style.mbtiInputContainer}>
                     <div className={style.detailTitle}>성격(MBTI)</div>
                     <div className={style.mbtiBtnContainer}>
                         <button className={style.enfj} 
-                            onClick={() => {
-                                user_information['mbti'] = "ENFJ";
-                                }}>ENFJ</button>
+                            >ENFJ</button>
                         <button className={style.infj}
-                            onClick={() => {
-                                user_information['mbti'] = "INFJ";
-                                }}>INFJ</button>
+                            >INFJ</button>
                         <button className={style.intj}
-                            onClick={() => {
-                                user_information['mbti'] = "INTJ";
-                                }}>INTJ</button>
+                            >INTJ</button>
                         <button className={style.entj}
-                            onClick={() => {
-                                user_information['mbti'] = "ENTJ";
-                                }}>ENTJ</button>
+                            >ENTJ</button>
                         <button className={style.enfp}
-                            onClick={() => {
-                                user_information['mbti'] = "ENFP";
-                                }}>ENFP</button>
+                            >ENFP</button>
                         <button className={style.infp}
-                            onClick={() => {
-                                user_information['mbti'] = "INFP";
-                                }}>INFP</button>
+                            >INFP</button>
                         <button className={style.intp}
-                            onClick={() => {
-                                user_information['mbti'] = "INTP";
-                                }}>INTP</button>
+                            >INTP</button>
                         <button className={style.entp}
-                            onClick={() => {
-                                user_information['mbti'] = "ENTP";
-                                }}>ENTP</button>
+                            >ENTP</button>
                         <button className={style.esfp}
-                            onClick={() => {
-                                user_information['mbti'] = "ESFP";
-                                }}>ESFP</button>
+                            >ESFP</button>
                         <button className={style.isfp}
-                            onClick={() => {
-                                user_information['mbti'] = "ISFP";
-                                }}>ISFP</button>
+                            >ISFP</button>
                         <button className={style.istp}
-                            onClick={() => {
-                                user_information['mbti'] = "ISTP";
-                                }}>ISTP</button>
+                            >ISTP</button>
                         <button className={style.estp}
-                            onClick={() => {
-                                user_information['mbti'] = "ESTP";
-                                }}>ESTP</button>
+                            >ESTP</button>
                         <button className={style.esfj}
-                            onClick={() => {
-                                user_information['mbti'] = "ESFJ";
-                                }}>ESFJ</button>
+                            >ESFJ</button>
                         <button className={style.isfj}
-                            onClick={() => {
-                                user_information['mbti'] = "ISFJ";
-                                }}>ISFJ</button>
+                            >ISFJ</button>
                         <button className={style.istj}
-                            onClick={() => {
-                                user_information['mbti'] = "ISTJ";
-                                }}>ISTJ</button>
+                            >ISTJ</button>
                         <button className={style.estj}
-                            onClick={() => {
-                                user_information['mbti'] = "ESTJ";
-                                }}>ESTJ</button>
+                            >ESTJ</button>
                     </div>
                 </div>
                 <div className={style.addrInputContainer}>
@@ -148,33 +83,27 @@ function Information(props) {
                     <div className={style.selectContainer}>
                         <div className={style.selectAddress}>
                             <select id={style.sido} 
-                            onChange={(e) => {
-                                setVal1(e.target.value);
-                                selectSidoText();
-                            }}>
+                            >
                             <option value="">선택</option>
-                            {sido.map((el) => (
+                            {/*sido.map((el) => (
                                 <option key={el.sido} value={el.sido}>
                                 {el.codeNm}
                                 </option>
-                            ))}
+                            ))*/}
                             </select>
                         </div>
 
                         <div className={style.selectAddress}>     
                             <select id={style.sigugun} 
-                            onChange={(e) => {
-                                setVal2(e.target.value);
-                                selectSigugunText();
-                            }}>
+                            >
                             <option value="">선택</option>
-                            {sigugun
+                            {/*sigugun
                                 .filter((el) => el.sido === val1)
                                 .map((el) => (
                                 <option key={el.sigugun} value={el.sigugun}>
                                     {el.codeNm}
                                 </option>
-                                ))}
+                                ))*/}
                             </select>
                         </div>
                     </div>
@@ -184,69 +113,37 @@ function Information(props) {
                     <div className={style.keywordContentContainer}>
                         <div className={style.keywordBtnContainer}>
                             <button className={style.dog}
-                                onClick={() => {
-                                    user_information['keyword'] = [...user_information['keyword'], "강아지상"];
-                                    }}>강아지상</button>
+                                >강아지상</button>
                             <button className={style.cat}
-                                onClick={() => {
-                                    user_information['keyword'] = [...user_information['keyword'], "고양이상"];
-                                    }}>고양이상</button>
+                                >고양이상</button>
                             <button className={style.rabbit}
-                                onClick={() => {
-                                    user_information['keyword'] = [...user_information['keyword'], "토끼상"];
-                                    }}>토끼상</button>
+                                >토끼상</button>
                             <button className={style.bear}
-                                onClick={() => {
-                                    user_information['keyword'] = [...user_information['keyword'], "곰상"];
-                                    }}>곰상</button>
+                                >곰상</button>
                             <button className={style.kind}
-                                onClick={() => {
-                                    user_information['keyword'] = [...user_information['keyword'], "다정한"];
-                                    }}>다정한</button>
+                                >다정한</button>
                             <button className={style.calm}
-                                onClick={() => {
-                                    user_information['keyword'] = [...user_information['keyword'], "차분한"];
-                                    }}>차분한</button>
+                                >차분한</button>
                             <button className={style.active}
-                                onClick={() => {
-                                    user_information['keyword'] = [...user_information['keyword'], "활발한"];
-                                    }}>활발한</button>
+                                >활발한</button>
                             <button className={style.cute}
-                                onClick={() => {
-                                    user_information['keyword'] = [...user_information['keyword'], "귀여운"];
-                                    }}>귀여운</button>
+                                >귀여운</button>
                             <button className={style.thin}
-                                onClick={() => {
-                                    user_information['keyword'] = [...user_information['keyword'], "마른"];
-                                    }}>마른</button>
+                                >마른</button>
                             <button className={style.muscle}
-                                onClick={() => {
-                                    user_information['keyword'] = [...user_information['keyword'], "근육질"];
-                                    }}>근육질</button>
+                                >근육질</button>
                             <button className={style.normal}
-                                onClick={() => {
-                                    user_information['keyword'] = [...user_information['keyword'], "보통"];
-                                    }}>보통</button>
+                                >보통</button>
                             <button className={style.full}
-                                onClick={() => {
-                                    user_information['keyword'] = [...user_information['keyword'], "통통한"];
-                                    }}>통통한</button>
+                                >통통한</button>
                             <button className={style.game}
-                                onClick={() => {
-                                    user_information['keyword'] = [...user_information['keyword'], "게임"];
-                                    }}>게임</button>
+                                >게임</button>
                             <button className={style.movie}
-                                onClick={() => {
-                                    user_information['keyword'] = [...user_information['keyword'], "영화보기"];
-                                    }}>영화보기</button>
+                                >영화보기</button>
                             <button className={style.trip}
-                                onClick={() => {
-                                    user_information['keyword'] = [...user_information['keyword'], "여행"];
-                                    }}>여행</button>
+                                >여행</button>
                             <button className={style.exercise}
-                                onClick={() => {
-                                    user_information['keyword'] = [...user_information['keyword'], "운동"];
-                                    }}>운동</button>
+                                >운동</button>
                         </div>
                     </div>
                 </div>
@@ -311,7 +208,6 @@ function Information(props) {
                         type='submit'
                         onClick={() => {
                         navigate("/select");
-                        props.getUserData(user_information['id'], user_information['age'], user_information['height'], user_information['gender'], user_information['link'], user_information['mbti'], user_information['addr'], user_information['keyword']);
                         }}
                     >
                         정보 수정하기

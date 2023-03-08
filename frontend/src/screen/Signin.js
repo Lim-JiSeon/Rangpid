@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { signin } from "../actions/userActions";
 
 
-function Signin(props) {
+function Signin() {
     let navigate = useNavigate();
     
     /*const [id, setId] = useState("");
