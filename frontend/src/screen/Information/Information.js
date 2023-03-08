@@ -1,10 +1,9 @@
-import style from "./Register.module.css";
+import style from "./Information.module.css";
 import { useNavigate } from "react-router-dom"; 
 import { hangjungdong } from "../../data/Hangjungdong";
 import { useState } from "react";
-import axios from 'axios';
 
-function Register(props) {
+function Information(props) {
     let navigate = useNavigate();
     const { sido, sigugun, dong } = hangjungdong;
     
@@ -36,16 +35,11 @@ function Register(props) {
         keyword : [],
     };
 
-
-    axios.get('http://localhost:5000/api/users/createadmin')
-        .then(response => console.log(response.data))
-        .catch(error => console.error(error));
-
     return (
         <div className={style.wrap}>
         <div className={style.container}>
             <div className={style.titleContainer}>
-                <div className={style.subTitle}>회원 가입</div>
+                <div className={style.subTitle}>정보 수정</div>
             </div>
             <div id={style.containerContents}>
                 <div className={style.infoInputContainer}>
@@ -312,15 +306,15 @@ function Register(props) {
                     </div>
                 </div>
             </div>
-            <div className={style.registerContainer}>
-                    <button className={style.registerBtn}
+            <div className={style.saveContainer}>
+                    <button className={style.saveBtn}
                         type='submit'
                         onClick={() => {
                         navigate("/select");
                         props.getUserData(user_information['id'], user_information['age'], user_information['height'], user_information['gender'], user_information['link'], user_information['mbti'], user_information['addr'], user_information['keyword']);
                         }}
                     >
-                        회원 가입하기
+                        정보 수정하기
                     </button>
             </div>
         </div>
@@ -331,4 +325,4 @@ function Register(props) {
     );
 }
 
-export default Register;
+export default Information;

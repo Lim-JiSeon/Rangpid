@@ -32,20 +32,21 @@ html, body {
     margin-left: 350px;
 }
 
+.infoInputContainer,
+.mbtiInputContainer,
+.idealMbtiInputContainer,
+.addrInputContainer,
+.keywordInputContainer,
+.idealKeywordContentContainer {
+    margin-top: 50px;
+}
+
 .titleContainer {
     width: 100%;
     height: 200px;
     vertical-align: middle;
     display: flex;
     justify-content: center;
-}
-
-.idealAgeInputContainer,
-.mbtiInputContainer,
-.addrInputContainer,
-.keywordInputContainer,
-.nextContainer {
-    margin-top: 50px;
 }
 
 .subTitle {
@@ -70,72 +71,73 @@ html, body {
   margin-bottom: 30px;
 }
 
-.idealAgeInputContainer
-.heightInputContainer {
+.miniTitle {
+  font-size: var(--semi-title-font-size);
+  font-weight: bold;
+}
+
+.idInputContainer > .miniTitle,
+.ageInputContainer > .miniTitle,
+.heightInputContainer > .miniTitle {
+    flex: 1;
+    margin-top: 10px;
+}
+
+.linkInputContainer > .miniTitle {
+    width: 300px;
+    margin-top: 10px;
+}
+
+.idInputContainer,
+.ageInputContainer,
+.sexInputContainer,
+.heightInputContainer,
+.idealAgeInputContainer,
+.idealHeightInputContainer {
     display: flex;
     width: 1000px;
     flex-direction: row;
     margin-top: 30px;
 }
 
-.idealAgeInputInner {
-    position: relative;
-    height: 4px;
-    width: 650px;
+.idInput,
+.ageInput,
+.heightInput {
+    width: 440px;
+    height: 74px;
+    flex: 2;
+    background-color: var(--content-background-color);
+    border: none;
+    border-radius: 30px;
+    font-size: var(--semi-title-font-size);
+    text-align: center;
+}
+
+.mSex,
+.fSex {
+    font-size: var(--semi-title-font-size);
+    font-weight: bold;
     border-radius: 10px;
-    background-color: #CBCBCB;
+    border: none;
+    background-color: var(--content-background-color);
+    width: 200px;
+    height: 70px;
+    margin-right: 100px;
+    flex: 1;
 }
 
-.idealAgeInputInner {
-    position: absolute;
-    height: 4px;
-    left: 30%;
-    right: 30%;
-    border-radius: 10px;
-    background-color: #CBCBCB;
+.sexInputContainer > .miniTitle {
+    flex: 2;
 }
 
-.rangeWrap {
-    position: relative;
-}
-
-.rangeMin,
-.rangeMax {
-    position: absolute;
-    top: -9px;
-    height: 7px;
-    width: 100%;
-        -webkit-appearance: none;
-    background: none;
-    pointer-events: none;
-}
-
-input[type="range"]::-webkit-slider-thumb {
-    pointer-events: auto;
-    height: 30px;
-    width: 30px;
-    border-radius: 50%;
-    border: 2px solid #CBCBCB;
-    background-color: white;
-    -webkit-appearance: none;
-}
-
-.idealEnfj, 
-.idealInfj, 
-.idealIntj, 
-.idealEntj, 
-.idealEnfp,
-.idealInfp,
-.idealIntp,
-.idealEntp,
-.idealEsfp,
-.idealIsfp,
-.idealIstp,
-.idealEstp,
-.idealEsfj,
-.idealIsfj,
-.idealIstj,
-.idealEstj {
+.enfj, .idealEnfj, .infj, .idealInfj,
+.intj, .idealIntj, .entj, .idealEntj,
+.enfp, .idealEnfp, .infp, .idealInfp,
+.intp, .idealIntp, .entp, .idealEntp,
+.esfp, .idealEsfp, .isfp, .idealIsfp,
+.istp, .idealIstp, .estp, .idealEstp,
+.esfj, .idealEsfj, .isfj, .idealIsfj,
+.istj, .idealIstj, .estj, .idealEstj {
     width: 100px;
     font-size: var(--semi-title-font-size);
     font-weight: bold;
@@ -144,22 +146,15 @@ input[type="range"]::-webkit-slider-thumb {
     background-color: var(--content-background-color);
     padding: 10px;
 }
-.idealDog,
-.idealCat,
-.idealRabbit,
-.idealBear,
-.idealKind,
-.idealCalm,
-.idealActive,
-.idealCute,
-.idealThin,
-.idealMuscle,
-.idealNormal,
-.idealFull,
-.idealGame,
-.idealMovie,
-.idealTrip,
-.idealExercise {
+
+.dog, .idealDog, .cat, .idealCat,
+.rabbit, .idealRabbit, .bear, .idealBear,
+.kind, .idealKind, .calm, .idealCalm,
+.active, .idealActive, .cute, .idealCute,
+.thin, .idealThin, .muscle, .idealMuscle,
+.normal, .idealNormal, .full, .idealFull,
+.game, .idealGame, .movie, .idealMovie,
+.trip, .idealTrip, .exercise, .idealExercise {
     width: 150px;
     font-size: var(--semi-content-font-size);
     font-weight: bold;
@@ -173,19 +168,20 @@ button:focus {
     background-color: var(--main-background-color);
 }
 
-.mbtiBtnContainer {
+.mbtiBtnContainer,
+.idealMbtiBtnContainer {
     width: 100%;
     display: grid;
     grid-template-columns: repeat(8, 1fr);
     gap: 20px 100px; 
 }
-
-.keywordBtnContainer {
+.keywordBtnContainer,
+.idealKeywordBtnContainer {
     width: 100%;
     display: grid;
     grid-template-columns: repeat(8, 1fr);
     gap: 20px 45px; 
-    margin-top: 50px;
+    margin-top: 30px;
 }
 
 .selectContainer {
@@ -205,13 +201,14 @@ select {
     margin-right: 150px;
 }
 
-.nextContainer {
+.saveContainer {
     width: 100%;
     display: flex;
     justify-content: center;
+    margin-top: 50px;
 }
 
-.nextBtn {
+.saveBtn {
     width: 296px;
     height: 72px;
     background-color: var(--main-background-color);
@@ -221,3 +218,4 @@ select {
     color: var(--main-txt-color);
     font-weight: bold;
 }
+

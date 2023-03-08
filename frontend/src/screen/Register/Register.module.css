@@ -34,9 +34,10 @@ html, body {
 
 .infoInputContainer,
 .mbtiInputContainer,
+.idealMbtiInputContainer,
 .addrInputContainer,
 .keywordInputContainer,
-.nextContainer {
+.idealKeywordContentContainer {
     margin-top: 50px;
 }
 
@@ -90,7 +91,9 @@ html, body {
 .idInputContainer,
 .ageInputContainer,
 .sexInputContainer,
-.heightInputContainer {
+.heightInputContainer,
+.idealAgeInputContainer,
+.idealHeightInputContainer {
     display: flex;
     width: 1000px;
     flex-direction: row;
@@ -110,12 +113,6 @@ html, body {
     text-align: center;
 }
 
-/*.detailContent {
-    font-size: var(--semi-content-font-size);
-    margin-top: 10px;
-    font-weight: bold;
-}*/
-
 .mSex,
 .fSex {
     font-size: var(--semi-title-font-size);
@@ -133,22 +130,14 @@ html, body {
     flex: 2;
 }
 
-.enfj, 
-.infj, 
-.intj, 
-.entj, 
-.enfp,
-.infp,
-.intp,
-.entp,
-.esfp,
-.isfp,
-.istp,
-.estp,
-.esfj,
-.isfj,
-.istj,
-.estj {
+.enfj, .idealEnfj, .infj, .idealInfj,
+.intj, .idealIntj, .entj, .idealEntj,
+.enfp, .idealEnfp, .infp, .idealInfp,
+.intp, .idealIntp, .entp, .idealEntp,
+.esfp, .idealEsfp, .isfp, .idealIsfp,
+.istp, .idealIstp, .estp, .idealEstp,
+.esfj, .idealEsfj, .isfj, .idealIsfj,
+.istj, .idealIstj, .estj, .idealEstj {
     width: 100px;
     font-size: var(--semi-title-font-size);
     font-weight: bold;
@@ -157,22 +146,15 @@ html, body {
     background-color: var(--content-background-color);
     padding: 10px;
 }
-.dog,
-.cat,
-.rabbit,
-.bear,
-.kind,
-.calm,
-.active,
-.cute,
-.thin,
-.muscle,
-.normal,
-.full,
-.game,
-.movie,
-.trip,
-.exercise {
+
+.dog, .idealDog, .cat, .idealCat,
+.rabbit, .idealRabbit, .bear, .idealBear,
+.kind, .idealKind, .calm, .idealCalm,
+.active, .idealActive, .cute, .idealCute,
+.thin, .idealThin, .muscle, .idealMuscle,
+.normal, .idealNormal, .full, .idealFull,
+.game, .idealGame, .movie, .idealMovie,
+.trip, .idealTrip, .exercise, .idealExercise {
     width: 150px;
     font-size: var(--semi-content-font-size);
     font-weight: bold;
@@ -186,13 +168,15 @@ button:focus {
     background-color: var(--main-background-color);
 }
 
-.mbtiBtnContainer {
+.mbtiBtnContainer,
+.idealMbtiBtnContainer {
     width: 100%;
     display: grid;
     grid-template-columns: repeat(8, 1fr);
     gap: 20px 100px; 
 }
-.keywordBtnContainer {
+.keywordBtnContainer,
+.idealKeywordBtnContainer {
     width: 100%;
     display: grid;
     grid-template-columns: repeat(8, 1fr);
@@ -217,14 +201,15 @@ select {
     margin-right: 150px;
 }
 
-.nextContainer {
+.registerContainer {
     width: 100%;
     display: flex;
     justify-content: center;
+    margin-top: 50px;
 }
 
-.nextBtn {
-    width: 196px;
+.registerBtn {
+    width: 296px;
     height: 72px;
     background-color: var(--main-background-color);
     border: 3px solid var(--main-txt-color);
