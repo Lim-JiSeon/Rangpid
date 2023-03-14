@@ -1,37 +1,40 @@
 import '../App.css';
-import { useEffect, useInsertionEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom"; 
-import { signin } from "../actions/userActions";
-
+import axios from 'axios';
 
 function Signin() {
     let navigate = useNavigate();
+    const [id, setId] = useState("");
     
-    /*const [id, setId] = useState("");
-    const userSignin = useSelector(state => state.userSignin);
-    const { loading, userInfo, error } = userSignin;
-    const dispatch = useDispatch();
+    const onClickLogin = () => {
+        axios.post("url", null, {
+            params: {
+                'id' : id
+            }
+        })
+        .then((res) => {
+            if (res.data.id == id) {
+                console.log("로그인 성공");
+                sessionStorage.setItem('id', id)
+                alert("로그인을 성공했습니다.")
+            } else if (res.data.id == null) {
+                console.log("로그인 실패 : 아이디 미입력");
+                alert("아이디를 입력해주세요.")
+            } else {
+                console.log("로그인 실패 : 아이디 불일치");
+                alert("아이디가 일치하지 않습니다.")
+            }
+        })
+        .catch()
+    };
 
     useEffect(() => {
-        if (userInfo) {
-            props.history.push("/");
-        }
-        return () => {
+        axios.post('http://localhost:5000/api/users/signin', null, username)
+        .then(res => console.log(res))
+        .catch()
+    }, [])
 
-        };
-    }, [userInfo]);
-
-
-    function setLogin() {
-        let idText = document.getElementById("login-input-txt").value;
-        props.getLogin(idText);
-    }
-
-    const submitHandler = (e) => {
-        e.preventDefault();
-        dispatchEvent(signin(id));
-    }
-*/
     return (
         <div className="wrap">
         <div className='container'>
@@ -45,15 +48,15 @@ function Signin() {
                         type='text'
                         id='login-input-txt'
                         placeholder='아이디를 입력해주세요.'
-                        
+                        onChange={(e) => setId(e.target.value)}
                     ></input>
                 </div>
                 <div className='log-in-container'>
                     <button className='log-in-btn'
                         type='submit'
                         onClick={() => {
-                        navigate("/select");
-                        //setLogin();
+                            onClickLogin();
+                            navigate("/select");
                         }}
                     >
                         로그인하기
@@ -67,6 +70,5 @@ function Signin() {
         </div>
     );
 }
-//import { formToJSON } from 'axios';
 
 export default Signin;

@@ -7,11 +7,55 @@ import axios from 'axios';
 function Register() {
     let navigate = useNavigate();
 
+    const [input, setInput] = useState({
+        id: '',
+        age: 0,
+        sex: '',
+        height: 0,
+        mbti: '',
+        addr: '',
+        keyword: [],
+        ideal_age: 0,
+        ideal_height: 0,
+        ideal_mbti: [],
+        ideal_keyword: []
+    });
+
+/*    const {id, age, sex, height, mbti, addr, keyword, ideal_age, ideal_height, ideal_mbti, ideal_keyword} = input;
+
+    const onChangeInput = (e) => {
+        const {name, value} = e.target;
+        setInput({
+            ...input,
+            [name]:value
+        });
+    };
 
     axios.get('http://localhost:5000/api/users/createadmin')
         .then(response => console.log(response.data))
         .catch(error => console.error(error));
 
+    const handleMale = () => {
+        setInput({
+            ...input,
+            ['sex']: 'male'
+        })
+    };
+
+    const handleFemale = () => {
+        setInput({
+            ...input,
+            ['sex']: 'female'
+        })
+    };
+
+    const handleMbti = (value) => {
+        setInput({
+            ...input,
+            ['mbti']: value
+        })
+    };
+*/
     return (
         <div className={style.wrap}>
         <div className={style.container}>
@@ -25,25 +69,38 @@ function Register() {
                         <div className={style.miniTitle}>카톡 아이디</div>
                         <input className={style.idInput}
                             type="text"
+                            name="id"
+                            //value={id}
+                            //onChange={onChangeInput}
                         ></input>
                     </div>
                     <div className={style.ageInputContainer}>
                         <div className={style.miniTitle}>나이</div>
                         <input className={style.ageInput}
                             type="text"
+                            name="age"
+                            //value={age}
+                            //onChange={onChangeInput}
                         ></input>
                     </div>
                     <div className={style.sexInputContainer}>
                         <div className={style.miniTitle}>성별</div>
                         <button className={style.mSex}
+                            //value={false}
+                            //onClick={handleMale}
                         >남성</button>
                         <button className={style.fSex}
+                            //value={false}
+                            //onClick={handleFemale}
                         >여성</button>
                     </div>
                     <div className={style.heightInputContainer}>
                         <div className={style.miniTitle}>키</div>
                             <input className={style.heightInput}
                             type="text"
+                            name="height"
+                            //value={height}
+                            //onChange={onChangeInput}
                         ></input>
                     </div>
                 </div>
@@ -51,36 +108,52 @@ function Register() {
                     <div className={style.detailTitle}>성격(MBTI)</div>
                     <div className={style.mbtiBtnContainer}>
                         <button className={style.enfj} 
+                            //onClick={handleMbti('ENFJ')}
                             >ENFJ</button>
                         <button className={style.infj}
+                            //onClick={handleMbti('INFJ')}
                             >INFJ</button>
                         <button className={style.intj}
+                            //onClick={handleMbti('INTJ')}
                             >INTJ</button>
                         <button className={style.entj}
+                            //onClick={handleMbti('ENTJ')}
                             >ENTJ</button>
                         <button className={style.enfp}
+                            //onClick={handleMbti('ENFP')}
                             >ENFP</button>
                         <button className={style.infp}
+                            //onClick={handleMbti('INFP')}
                             >INFP</button>
                         <button className={style.intp}
+                            //onClick={handleMbti('INTP')}
                             >INTP</button>
                         <button className={style.entp}
+                            //onClick={handleMbti('ENTP')}
                             >ENTP</button>
                         <button className={style.esfp}
+                            //onClick={handleMbti('ESFP')}
                             >ESFP</button>
                         <button className={style.isfp}
+                            //onClick={handleMbti('ISFP')}
                             >ISFP</button>
                         <button className={style.istp}
+                            //onClick={handleMbti('ISTP')}
                             >ISTP</button>
                         <button className={style.estp}
+                            //onClick={handleMbti('ESTP')}
                             >ESTP</button>
                         <button className={style.esfj}
+                            //onClick={handleMbti('ESFJ')}
                             >ESFJ</button>
                         <button className={style.isfj}
+                            //onClick={handleMbti('ISFJ')}
                             >ISFJ</button>
                         <button className={style.istj}
+                            //onClick={handleMbti('ISTJ')}
                             >ISTJ</button>
                         <button className={style.estj}
+                            //onClick={handleMbti('ESTJ')}
                             >ESTJ</button>
                     </div>
                 </div>
@@ -157,11 +230,21 @@ function Register() {
             <div id={style.containerContents}>
                 <div className={style.idealAgeInputContainer}>
                     <div className={style.detailTitle}>이상형 나이</div>
-                    <input className={style.idealAgeInput} type="range"></input>
+                    <input className={style.idealAgeInput} 
+                        type="range"
+                        name="ideal_age"
+                        //value={ideal_age}
+                        //onChange={onChangeInput}
+                    ></input>
                 </div>
                 <div className={style.idealHeightInputContainer}>
                     <div className={style.detailTitle}>이상형 키</div>
-                    <input className={style.idealHeightInput} type='range'></input>   
+                    <input className={style.idealHeightInput} 
+                        type='range'
+                        name="ideal_height"
+                        //value={ideal_height}
+                        //onChange={onChangeInput}
+                    ></input>   
                 </div>
                 <div className={style.idealMbtiInputContainer}>
                     <div className={style.detailTitle}>이상형 성격(MBTI)</div>
