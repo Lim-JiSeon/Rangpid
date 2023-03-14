@@ -2,10 +2,12 @@ import '../App.css';
 import mainImg from '../img/main-img.png';
 import { useNavigate } from "react-router-dom"; 
 
-function Select() {
+function Select(props) {
     let navigate = useNavigate();
-  
+    const isLogin = props.isLogin;
+
     return (
+        isLogin && 
         <div className="wrap">
         <div className='container'>
             <div id='container-contents'>
