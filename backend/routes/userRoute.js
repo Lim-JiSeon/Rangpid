@@ -1,10 +1,11 @@
 import express from 'express';
 import User from '../models/userModel';
-import { getToken } from '../utili';
+import { getToken, isAuth } from '../utili';
 
 const router = express.Router();
 
-router.post('/login',async (req,res)=>{
+//로그인
+router.post('/signin',async (req, res)=>{
     const signinUser = await User.findOne({
         username: req.body.username
     });
@@ -25,14 +26,15 @@ router.post('/login',async (req,res)=>{
             coupleScore: signinUser.coupleScore,
             matchingScore: signinUser.matchingScore,
             matchedId: signinUser.matchedId,
-            token: getToken(signinUser)
+            token: getToken(signinUser),
         })
     }else {
-        res.status(401).send({msg: 'Invalid username.'});
+        res.status(401).send({ message: 'Invalid username.'});
     }
 });
 
-router.post('/signup2', async (req,res)=>{
+//회원가입
+router.post('/signup', async (req, res)=>{
     const user = new User({
         username: req.body.username,
         age: req.body.age,
@@ -45,10 +47,6 @@ router.post('/signup2', async (req,res)=>{
         idealMbti: req.body.idealMbti,
         idealHeight: req.body.idealHeight,
         idealKeyword: req.body.idealKeyword,
-        idealScore: req.body.idealScore,
-        coupleScore: req.body.coupleScore,
-        matchingScore: req.body.matchingScore,
-        matchedId: req.body.matchedId
     });
     const newUser = await user.save();
     if(newUser) {
@@ -64,18 +62,60 @@ router.post('/signup2', async (req,res)=>{
             idealMbti: newUser.idealMbti,
             idealHeight: newUser.idealHeight,
             idealKeyword: newUser.idealKeyword,
-            idealScore: newUser.idealScore,
-            coupleScore: newUser.coupleScore,
-            matchingScore: newUser.matchingScore,
-            matchedId: newUser.matchedId,
             token: getToken(newUser),
         });
     }else {
-        res.status(401).send({message: 'Invalid User Data'});
+        res.status(401).send({ message: 'Invalid User Data'});
     }
 });
 
-router.get("/createadmin", async (req,res)=>{
+//사용자 정보 조회
+router.get('/edit/:id', async(req, res) => {
+    const userId = req.params.id;
+    const user = await User.findById(userId);
+    res.send({
+        user,
+    });
+});
+
+//정보수정-새로운 정보 업데이트
+router.put('/edit/:id', isAuth, async (req, res) => {
+    const userId = req.params.id;
+    const user = await User.findById(userId);
+    if (user) {
+      user.username = req.body.username || user.username;
+      user.age = req.body.age || user.age;
+      user.gender = req.body.gender || user.gender;
+      user.mbti = req.body.mbti || user.mbti;
+      user.residence = req.body.residence || user.residence;
+      user.height = req.body.height || user.height;
+      user.keyword = req.body.keyword || user.keyword;
+      user.idealAge = req.body.idealAge || user.idealAge;
+      user.idealMbti = req.body.idealMbti || user.idealMbti;
+      user.idealHeight = req.body.idealHeight || user.idealHeight;
+      user.idealKeyword = req.body.idealKeyword || user.idealKeyword;
+      const updatedUser = await user.save();
+      res.send({
+        _id: updatedUser.id,
+        age: updatedUser.age,
+        gender: updatedUser.gender,
+        mbti: updatedUser.mbti,
+        residence: updatedUser.residence,
+        height: updatedUser.height,
+        keyword: updatedUser.keyword,
+        idealAge: updatedUser.idealAge,
+        idealMbti: updatedUser.idealMbti,
+        idealHeight: updatedUser.idealHeight,
+        idealKeyword: updatedUser.idealKeyword,
+        token: getToken(updatedUser),
+      });
+    } else {
+      res.status(404).send({ message: 'User Not Found' });
+    }
+});
+
+//sample data
+router.get("/createadmin", async (req, res)=>{
     try {
         const user = new User({
             username: 'yewon',
@@ -97,7 +137,7 @@ router.get("/createadmin", async (req,res)=>{
         const newUser = await user.save();
         res.send(newUser);
     }catch(error) {
-    res.send({msg: error.message });
+    res.send({ message: error.message });
    }
 })
 

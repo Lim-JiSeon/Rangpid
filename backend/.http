@@ -1,0 +1,16 @@
+POST http://localhost:5000/api/users/signup
+Content-Type: application/json
+
+{
+    "username": 'yewon',
+    "age": '22',
+    "gender": '여성',
+    "mbti": 'istj',
+    "residence": '경기도 용인시',
+    "height": '163',   
+    "keyword": ['토끼상','곰상'],
+    "idealAge": '21~25',
+    "idealMbti": ['esfp'],
+    "idealHeight": '175~188',
+    "idealKeyword": ['마른','근육질'],
+}
