@@ -2,7 +2,7 @@ import bcrypt from "bcrypt";
 import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema({
-  username: {type:String, required:true },
+  username: {type:String, required:true, unique: true, dropDups: true },
   age: {type:Number, required:true },
   gender: {type:String, required:true },
   mbti: {type:String, required:true },
