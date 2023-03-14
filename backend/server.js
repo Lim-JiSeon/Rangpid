@@ -1,4 +1,5 @@
 import express from 'express';
+import cors from 'cors';
 import dotenv from 'dotenv';
 import config from './config';
 import mongoose from 'mongoose';
@@ -23,6 +24,10 @@ db.on("error", handleError);
 db.once("open", handleOpen);
 
 const app = express();
+app.use(cors({ origin: [
+    'http://localhost:5000',
+    'http://localhost:3000'
+]}));
 app.use(bodyParser.json());
 app.use("/api/users", userRoute);
 app.get("/api", (req, res) => {
