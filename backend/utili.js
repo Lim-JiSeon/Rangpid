@@ -19,6 +19,7 @@ const getToken = (user) => {
         coupleScore: user.coupleScore,
         matchingScore: user.matchingScore,
         matchedId: user.matchedId,
+        isAdmin: user.isAdmin,
       },
       config.JWT_SECRET,
       {
@@ -45,4 +46,12 @@ const isAuth = (req, res, next) => {
     }
 };
 
-export { getToken, isAuth };
+const isAdmin = (req, res, next) => {
+  console.log(req.user);
+  if (req.user && req.user.isAdmin) {
+    return next();
+  }
+  return res.status(401).send({ message: 'Admin Token is not valid.' });
+};
+
+export { getToken, isAuth, isAdmin };

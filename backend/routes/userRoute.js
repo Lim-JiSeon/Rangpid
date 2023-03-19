@@ -26,6 +26,7 @@ router.post('/signin',async (req, res)=>{
             coupleScore: signinUser.coupleScore,
             matchingScore: signinUser.matchingScore,
             matchedId: signinUser.matchedId,
+            isAdmin: updatedUser.isAdmin,
             token: getToken(signinUser),
         })
     }else {
@@ -62,6 +63,7 @@ router.post('/signup', async (req, res)=>{
             idealMbti: newUser.idealMbti,
             idealHeight: newUser.idealHeight,
             idealKeyword: newUser.idealKeyword,
+            isAdmin: updatedUser.isAdmin,
             token: getToken(newUser),
         });
     }else {
@@ -107,6 +109,7 @@ router.put('/edit/:id', isAuth, async (req, res) => {
         idealMbti: updatedUser.idealMbti,
         idealHeight: updatedUser.idealHeight,
         idealKeyword: updatedUser.idealKeyword,
+        isAdmin: updatedUser.isAdmin,
         token: getToken(updatedUser),
       });
     } else {
@@ -118,13 +121,13 @@ router.put('/edit/:id', isAuth, async (req, res) => {
 router.get("/createadmin", async (req, res)=>{
     try {
         const user = new User({
-            username: 'yewon',
+            username: 'softbear15',
             age: '22',
             gender: '여성',
             mbti: 'istj',
             residence: '경기도 용인시',
             height: '163',   
-            keyword: ['토끼상','곰상'],
+            keyword: ['토끼상','차분한', '운동'],
             idealAge: '21~25',
             idealMbti: ['esfp'],
             idealHeight: '175~188',
@@ -133,6 +136,7 @@ router.get("/createadmin", async (req, res)=>{
             coupleScore: {"Minsu":150 },
             matchingScore: '75',
             matchedId: 'gang',
+            isAdmin: true,
         });
         const newUser = await user.save();
         res.send(newUser);

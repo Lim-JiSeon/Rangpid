@@ -17,6 +17,7 @@ const userSchema = new mongoose.Schema({
   coupleScore: {type:Object, required:false },//key:상대방 아이디, value:점수합/200
   matchingScore: {type:Number, required:false },//선택된 커플의 점수가 들어감, "(점수합/2)" 100점 만점
   matchedId: {type:String, required:false },
+  isAdmin: { type: Boolean, required: true, default: false },
 });
 
 const userModel = mongoose.model("User", userSchema);
