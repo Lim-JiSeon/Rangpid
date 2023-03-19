@@ -71,15 +71,6 @@ router.post('/signup', async (req, res)=>{
     }
 });
 
-//사용자 정보 조회(url에 카톡아이디 포함)
-router.get('/edit/:id', async(req, res) => {
-    const userId = req.params.id;
-    const user = await User.findById(userId);
-    res.send({
-        user,
-    });
-});
-
 //정보수정-새로운 정보 업데이트
 router.put('/edit/:id', isAuth, async (req, res) => {
     const userId = req.params.id;
