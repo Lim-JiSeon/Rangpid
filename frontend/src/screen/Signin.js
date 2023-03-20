@@ -8,10 +8,8 @@ function Signin() {
     const [id, setId] = useState("");
     
     const onClickLogin = () => {
-        axios.post("url", null, {
-            params: {
-                'id' : id
-            }
+        axios.post("http://localhost:5000/api/users/signin",{
+            username: id
         })
         .then((res) => {
             if (res.data.id == id) {
@@ -28,27 +26,6 @@ function Signin() {
         })
         .catch()
     };
-
-    try {
-        ;(async () => {
-            axios.post('http://localhost:5000/api/users/signin', {
-                username: id
-            })
-            .then((res) => console.log(res))
-            .catch()
-        })()
-      } catch (e) {
-        console.log(e)
-      }
-
-    
-/*useEffect(() => {
-                axios.post('http://localhost:5000/api/users/signin', null, {
-                    username: id
-                })
-                .then(res => console.log(res))
-                .catch()
-            }, []) */
 
     return (
         <div className="wrap">

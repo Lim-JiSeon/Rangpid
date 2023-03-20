@@ -1,61 +1,122 @@
 import style from "./Register.module.css";
 import { useNavigate } from "react-router-dom"; 
 import { hangjungdong } from "../../data/Hangjungdong";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from 'axios';
 
 function Register() {
     let navigate = useNavigate();
 
-    const [input, setInput] = useState({
+    let [input, setInput] = useState({
         id: '',
         age: 0,
         sex: '',
         height: 0,
         mbti: '',
-        addr: '',
+        addr: '서울 강남',
         keyword: [],
-        ideal_age: 0,
-        ideal_height: 0,
+        ideal_age: [],
+        ideal_height: [],
         ideal_mbti: [],
         ideal_keyword: []
     });
 
-/*    const {id, age, sex, height, mbti, addr, keyword, ideal_age, ideal_height, ideal_mbti, ideal_keyword} = input;
+    const {id, age, sex, height, mbti, addr, keyword, ideal_age, ideal_height, ideal_mbti, ideal_keyword} = input;
 
     const onChangeInput = (e) => {
         const {name, value} = e.target;
-        setInput({
+        setInput = ()=>{setInput({
             ...input,
             [name]:value
-        });
+        })};
     };
 
-    axios.get('http://localhost:5000/api/users/createadmin')
-        .then(response => console.log(response.data))
-        .catch(error => console.error(error));
-
     const handleMale = () => {
-        setInput({
+        setInput = ()=>{setInput({
             ...input,
             ['sex']: 'male'
-        })
+        })};
     };
 
     const handleFemale = () => {
-        setInput({
+        setInput = ()=>{setInput({
             ...input,
             ['sex']: 'female'
-        })
+        })};
     };
 
     const handleMbti = (value) => {
-        setInput({
+        setInput = ()=>{setInput({
             ...input,
             ['mbti']: value
-        })
+        })};
     };
-*/
+
+    const handleKeyword = (value) => {
+        setInput = ()=>{setInput({
+            ...input,
+            ['ketword']: ['ketword'].concat(value)
+        })};
+    };
+
+    const handleHeight = () => {
+        setInput = ()=>{setInput({
+            ...input,
+            ['ideal_height']: [170, 180]
+        })};
+    };
+
+    const handleAge = () => {
+        setInput = ()=>{setInput({
+            ...input,
+            ['ideal_age']: [20, 25]
+        })};
+    };
+
+    /*const handleAddr = () => {
+        setInput = ()=>{setInput({
+            ...input,
+            ['addr']: "서울 강남"
+        })};
+    };*/
+
+    const handleIdealMbti = (value) => {
+        setInput = ()=>{setInput({
+            ...input,
+            ['ideal_mbti']: ['ideal_mbit'].concat(value)
+        })};
+    };
+
+    const handleIdealKeyword = (value) => {
+        setInput = ()=>{setInput({
+            ...input,
+            ['ideal_ketword']: ['ideal_ketword'].concat(value)
+        })};
+    };
+
+
+    const onClickRegister = () => {
+        axios.post("http://localhost:5000/api/users/signup",{
+            username: id,
+            age: age,
+            gender: sex,
+            mbti: mbti,
+            residence: addr,
+            height: height,
+            keyword: keyword,
+            idealAge: ideal_age,
+            idealMbti: ideal_mbti,
+            idealHeight: ideal_height,
+            idealKeyword: ideal_keyword
+        })
+        .then((res) => {
+            console.log("회원가입 성공", res.data);
+        })
+        .catch((err) => {
+            console.log(err);
+        });    
+    };
+
     return (
         <div className={style.wrap}>
         <div className={style.container}>
@@ -70,8 +131,7 @@ function Register() {
                         <input className={style.idInput}
                             type="text"
                             name="id"
-                            //value={id}
-                            //onChange={onChangeInput}
+                            onChange={onChangeInput}
                         ></input>
                     </div>
                     <div className={style.ageInputContainer}>
@@ -79,19 +139,16 @@ function Register() {
                         <input className={style.ageInput}
                             type="text"
                             name="age"
-                            //value={age}
-                            //onChange={onChangeInput}
+                            onChange={onChangeInput}
                         ></input>
                     </div>
                     <div className={style.sexInputContainer}>
                         <div className={style.miniTitle}>성별</div>
                         <button className={style.mSex}
-                            //value={false}
-                            //onClick={handleMale}
+                            onClick={handleMale}
                         >남성</button>
                         <button className={style.fSex}
-                            //value={false}
-                            //onClick={handleFemale}
+                            onClick={handleFemale}
                         >여성</button>
                     </div>
                     <div className={style.heightInputContainer}>
@@ -99,8 +156,7 @@ function Register() {
                             <input className={style.heightInput}
                             type="text"
                             name="height"
-                            //value={height}
-                            //onChange={onChangeInput}
+                            onChange={onChangeInput}
                         ></input>
                     </div>
                 </div>
@@ -108,52 +164,52 @@ function Register() {
                     <div className={style.detailTitle}>성격(MBTI)</div>
                     <div className={style.mbtiBtnContainer}>
                         <button className={style.enfj} 
-                            //onClick={handleMbti('ENFJ')}
+                            onClick={handleMbti('ENFJ')}
                             >ENFJ</button>
                         <button className={style.infj}
-                            //onClick={handleMbti('INFJ')}
+                            onClick={handleMbti('INFJ')}
                             >INFJ</button>
                         <button className={style.intj}
-                            //onClick={handleMbti('INTJ')}
+                            onClick={handleMbti('INTJ')}
                             >INTJ</button>
                         <button className={style.entj}
-                            //onClick={handleMbti('ENTJ')}
+                            onClick={handleMbti('ENTJ')}
                             >ENTJ</button>
                         <button className={style.enfp}
-                            //onClick={handleMbti('ENFP')}
+                            onClick={handleMbti('ENFP')}
                             >ENFP</button>
                         <button className={style.infp}
-                            //onClick={handleMbti('INFP')}
+                            onClick={handleMbti('INFP')}
                             >INFP</button>
                         <button className={style.intp}
-                            //onClick={handleMbti('INTP')}
+                            onClick={handleMbti('INTP')}
                             >INTP</button>
                         <button className={style.entp}
-                            //onClick={handleMbti('ENTP')}
+                            onClick={handleMbti('ENTP')}
                             >ENTP</button>
                         <button className={style.esfp}
-                            //onClick={handleMbti('ESFP')}
+                            onClick={handleMbti('ESFP')}
                             >ESFP</button>
                         <button className={style.isfp}
-                            //onClick={handleMbti('ISFP')}
+                            onClick={handleMbti('ISFP')}
                             >ISFP</button>
                         <button className={style.istp}
-                            //onClick={handleMbti('ISTP')}
+                            onClick={handleMbti('ISTP')}
                             >ISTP</button>
                         <button className={style.estp}
-                            //onClick={handleMbti('ESTP')}
+                            onClick={handleMbti('ESTP')}
                             >ESTP</button>
                         <button className={style.esfj}
-                            //onClick={handleMbti('ESFJ')}
+                            onClick={handleMbti('ESFJ')}
                             >ESFJ</button>
                         <button className={style.isfj}
-                            //onClick={handleMbti('ISFJ')}
+                            onClick={handleMbti('ISFJ')}
                             >ISFJ</button>
                         <button className={style.istj}
-                            //onClick={handleMbti('ISTJ')}
+                            onClick={handleMbti('ISTJ')}
                             >ISTJ</button>
                         <button className={style.estj}
-                            //onClick={handleMbti('ESTJ')}
+                            onClick={handleMbti('ESTJ')}
                             >ESTJ</button>
                     </div>
                 </div>
@@ -192,36 +248,52 @@ function Register() {
                     <div className={style.keywordContentContainer}>
                         <div className={style.keywordBtnContainer}>
                             <button className={style.dog}
+                                onClick={handleKeyword('강아지상')}
                                 >강아지상</button>
                             <button className={style.cat}
+                                onClick={handleKeyword('고양이상')}
                                 >고양이상</button>
                             <button className={style.rabbit}
+                                onClick={handleKeyword('토끼상')}
                                 >토끼상</button>
                             <button className={style.bear}
+                                onClick={handleKeyword('곰상')}
                                 >곰상</button>
                             <button className={style.kind}
+                                onClick={handleKeyword('다정한')}
                                 >다정한</button>
                             <button className={style.calm}
+                                onClick={handleKeyword('차분한')}
                                 >차분한</button>
                             <button className={style.active}
+                                onClick={handleKeyword('활발한')}
                                 >활발한</button>
                             <button className={style.cute}
+                                onClick={handleKeyword('귀여운')}
                                 >귀여운</button>
                             <button className={style.thin}
+                                onClick={handleKeyword('마른')}
                                 >마른</button>
                             <button className={style.muscle}
+                                onClick={handleKeyword('근육질')}
                                 >근육질</button>
                             <button className={style.normal}
+                                onClick={handleKeyword('보통')}
                                 >보통</button>
                             <button className={style.full}
+                                onClick={handleKeyword('통통한')}
                                 >통통한</button>
                             <button className={style.game}
+                                onClick={handleKeyword('게임')}
                                 >게임</button>
                             <button className={style.movie}
+                                onClick={handleKeyword('영화보기')}
                                 >영화보기</button>
                             <button className={style.trip}
+                                onClick={handleKeyword('여행')}
                                 >여행</button>
                             <button className={style.exercise}
+                                onClick={handleKeyword('운동')}
                                 >운동</button>
                         </div>
                     </div>
@@ -233,8 +305,7 @@ function Register() {
                     <input className={style.idealAgeInput} 
                         type="range"
                         name="ideal_age"
-                        //value={ideal_age}
-                        //onChange={onChangeInput}
+                        onChange={handleAge}
                     ></input>
                 </div>
                 <div className={style.idealHeightInputContainer}>
@@ -242,29 +313,60 @@ function Register() {
                     <input className={style.idealHeightInput} 
                         type='range'
                         name="ideal_height"
-                        //value={ideal_height}
-                        //onChange={onChangeInput}
+                        onChange={handleHeight}
                     ></input>   
                 </div>
                 <div className={style.idealMbtiInputContainer}>
                     <div className={style.detailTitle}>이상형 성격(MBTI)</div>
                     <div className={style.idealMbtiBtnContainer}>
-                        <button className={style.idealEnfj}>ENFJ</button>
-                        <button className={style.idealInfj}>INFJ</button>
-                        <button className={style.idealIntj}>INTJ</button>
-                        <button className={style.idealEntj}>ENTJ</button>
-                        <button className={style.idealEnfp}>ENFP</button>
-                        <button className={style.idealInfp}>INFP</button>
-                        <button className={style.idealIntp}>INTP</button>
-                        <button className={style.idealEntp}>ENTP</button>
-                        <button className={style.idealEsfp}>ESFP</button>
-                        <button className={style.idealIsfp}>ISFP</button>
-                        <button className={style.idealIstp}>ISTP</button>
-                        <button className={style.idealEstp}>ESTP</button>
-                        <button className={style.idealEsfj}>ESFJ</button>
-                        <button className={style.idealIsfj}>ISFJ</button>
-                        <button className={style.idealIstj}>ISTJ</button>
-                        <button className={style.idealEstj}>ESTJ</button>
+                        <button className={style.idealEnfj}
+                            onClick={handleIdealMbti('ENFJ')}
+                        >ENFJ</button>
+                        <button className={style.idealInfj}
+                            onClick={handleIdealMbti('INFJ')}
+                        >INFJ</button>
+                        <button className={style.idealIntj}
+                            onClick={handleIdealMbti('INTJ')}
+                        >INTJ</button>
+                        <button className={style.idealEntj}
+                            onClick={handleIdealMbti('ENTJ')}
+                        >ENTJ</button>
+                        <button className={style.idealEnfp}
+                            onClick={handleIdealMbti('ENFP')}
+                        >ENFP</button>
+                        <button className={style.idealInfp}
+                            onClick={handleIdealMbti('INFP')}
+                        >INFP</button>
+                        <button className={style.idealIntp}
+                            onClick={handleIdealMbti('INTP')}
+                        >INTP</button>
+                        <button className={style.idealEntp}
+                            onClick={handleIdealMbti('ENTP')}
+                        >ENTP</button>
+                        <button className={style.idealEsfp}
+                            onClick={handleIdealMbti('ESFP')}
+                        >ESFP</button>
+                        <button className={style.idealIsfp}
+                            onClick={handleIdealMbti('ISFP')}
+                        >ISFP</button>
+                        <button className={style.idealIstp}
+                            onClick={handleIdealMbti('ISTP')}
+                        >ISTP</button>
+                        <button className={style.idealEstp}
+                            onClick={handleIdealMbti('ESTP')}
+                        >ESTP</button>
+                        <button className={style.idealEsfj}
+                            onClick={handleIdealMbti('ESFJ')}
+                        >ESFJ</button>
+                        <button className={style.idealIsfj}
+                            onClick={handleIdealMbti('ISFJ')}
+                        >ISFJ</button>
+                        <button className={style.idealIstj}
+                            onClick={handleIdealMbti('ISTJ')}
+                        >ISTJ</button>
+                        <button className={style.idealEstj}
+                            onClick={handleIdealMbti('ESTJ')}
+                        >ESTJ</button>
                     </div>
                 </div>
                 
@@ -272,22 +374,54 @@ function Register() {
                     <div className={style.idealKeywordContentContainer}>
                         <div className={style.detailTitle}>이상형 키워드</div>
                         <div className={style.idealKeywordBtnContainer}>
-                            <button className={style.idealDog}>강아지상</button>
-                            <button className={style.idealCat}>고양이상</button>
-                            <button className={style.idealRabbit}>토끼상</button>
-                            <button className={style.idealBear}>곰상</button>
-                            <button className={style.idealKind}>다정한</button>
-                            <button className={style.idealCalm}>차분한</button>
-                            <button className={style.idealActive}>활발한</button>
-                            <button className={style.idealCute}>귀여운</button>
-                            <button className={style.idealThin}>마른</button>
-                            <button className={style.idealMuscle}>근육질</button>
-                            <button className={style.idealNormal}>보통</button>
-                            <button className={style.idealFull}>통통한</button>
-                            <button className={style.idealGame}>게임</button>
-                            <button className={style.idealMovie}>영화보기</button>
-                            <button className={style.idealTrip}>여행</button>
-                            <button className={style.idealExercise}>운동</button>
+                            <button className={style.idealDog}
+                                onClick={handleIdealKeyword('강아지상')}
+                            >강아지상</button>
+                            <button className={style.idealCat}
+                                onClick={handleIdealKeyword('고양이상')}
+                            >고양이상</button>
+                            <button className={style.idealRabbit}
+                                onClick={handleIdealKeyword('토끼상')}
+                            >토끼상</button>
+                            <button className={style.idealBear}
+                                onClick={handleIdealKeyword('곰상')}
+                            >곰상</button>
+                            <button className={style.idealKind}
+                                onClick={handleIdealKeyword('다정한')}
+                            >다정한</button>
+                            <button className={style.idealCalm}
+                                onClick={handleIdealKeyword('차분한')}
+                            >차분한</button>
+                            <button className={style.idealActive}
+                                onClick={handleIdealKeyword('활발한')}
+                            >활발한</button>
+                            <button className={style.idealCute}
+                                onClick={handleIdealKeyword('귀여운')}
+                            >귀여운</button>
+                            <button className={style.idealThin}
+                                onClick={handleIdealKeyword('마른')}
+                            >마른</button>
+                            <button className={style.idealMuscle}
+                                onClick={handleIdealKeyword('근육질')}
+                            >근육질</button>
+                            <button className={style.idealNormal}
+                                onClick={handleIdealKeyword('보통')}
+                            >보통</button>
+                            <button className={style.idealFull}
+                                onClick={handleIdealKeyword('통통한')}
+                            >통통한</button>
+                            <button className={style.idealGame}
+                                onClick={handleIdealKeyword('게임')}
+                            >게임</button>
+                            <button className={style.idealMovie}
+                                onClick={handleIdealKeyword('영화보기')}
+                            >영화보기</button>
+                            <button className={style.idealTrip}
+                                onClick={handleIdealKeyword('여행')}
+                            >여행</button>
+                            <button className={style.idealExercise}
+                                onClick={handleIdealKeyword('운동')}
+                            >운동</button>
                         </div>
                     </div>
                 </div>
@@ -296,7 +430,8 @@ function Register() {
                     <button className={style.registerBtn}
                         type='submit'
                         onClick={() => {
-                        navigate("/select");
+                            onClickRegister();
+                            navigate("/select");
                         }}
                     >
                         회원 가입하기
