@@ -1,5 +1,5 @@
 POST http://localhost:5000/api/users/signup
-# Content-Type: application/json
+Content-Type: application/json
 
 {
     "username": "gang",
@@ -7,10 +7,10 @@ POST http://localhost:5000/api/users/signup
     "gender": "남성",
     "mbti": "esfp",
     "residence": "경기도 용인시",
-    "height": 175,   
+    "height": "175",   
     "keyword": ["토끼상", "곰상"],
-    "idealAge": "21~22",
+    "idealAge": [22, 23],
     "idealMbti": ["istj"],
-    "idealHeight": "175~188",
-    "idealKeyword": ["마른","근육질"],
+    "idealHeight": [162, 164],
+    "idealKeyword": ["마른", "근육질"],
 }

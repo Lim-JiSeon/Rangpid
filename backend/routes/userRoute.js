@@ -35,7 +35,7 @@ router.post('/signin',async (req, res)=>{
 });
 
 //회원가입
-router.post('/signup', async (req, res)=>{
+router.post('/signup', async (req, res)=> {
     const user = new User({
         username: req.body.username,
         age: req.body.age,
@@ -50,7 +50,7 @@ router.post('/signup', async (req, res)=>{
         idealKeyword: req.body.idealKeyword,
     });
     const newUser = await user.save();
-    if(newUser) {
+    if (newUser) {
          res.send({
             _id: newUser.id,
             age: newUser.age,
@@ -67,7 +67,7 @@ router.post('/signup', async (req, res)=>{
             token: getToken(newUser),
         });
     }else {
-        res.status(401).send({ message: 'Invalid User Data'});
+        res.status(401).send({ message: 'Invalid User Data' });
     }
 });
 
@@ -119,9 +119,9 @@ router.get("/createadmin", async (req, res)=>{
             residence: '경기도 용인시',
             height: '163',   
             keyword: ['토끼상','차분한', '운동'],
-            idealAge: '21~25',
+            idealAge: [20, 30],
             idealMbti: ['esfp'],
-            idealHeight: '175~188',
+            idealHeight: [174, 185],
             idealKeyword: ['마른','근육질'],
             idealScore: {"Minsu":75,"Minjun":60 },
             coupleScore: {"Minsu":150 },
