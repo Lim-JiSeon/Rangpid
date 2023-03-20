@@ -1,5 +1,5 @@
 POST http://localhost:5000/api/users/signup
-Content-Type: application/json
+# Content-Type: application/json
 
 {
     "username": "gang",
