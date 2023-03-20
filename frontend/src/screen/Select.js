@@ -7,7 +7,7 @@ function Select(props) {
     const isLogin = props.isLogin;
 
     return (
-        isLogin && 
+        //isLogin && 
         <div className="wrap">
         <div className='container'>
             <div id='container-contents'>

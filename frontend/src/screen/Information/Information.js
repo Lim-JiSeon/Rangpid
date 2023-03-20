@@ -2,10 +2,21 @@ import style from "./Information.module.css";
 import { useNavigate } from "react-router-dom"; 
 import { hangjungdong } from "../../data/Hangjungdong";
 import { useState } from "react";
+import axios from "axios";
 
 function Information() {
     let navigate = useNavigate();
 
+    let id = "yewon";
+
+    const getInfo = (id) => {
+        axios.get(`http://localhost:5000/api/users/edit/:${id}`)
+            .then((res) => console.log(res))
+            .catch(console.error())
+    };
+
+    getInfo(id);
+    
     return (
         <div className={style.wrap}>
         <div className={style.container}>

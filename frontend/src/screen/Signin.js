@@ -29,11 +29,26 @@ function Signin() {
         .catch()
     };
 
-    useEffect(() => {
-        axios.post('http://localhost:5000/api/users/signin', null, username)
-        .then(res => console.log(res))
-        .catch()
-    }, [])
+    try {
+        ;(async () => {
+            axios.post('http://localhost:5000/api/users/signin', {
+                username: id
+            })
+            .then((res) => console.log(res))
+            .catch()
+        })()
+      } catch (e) {
+        console.log(e)
+      }
+
+    
+/*useEffect(() => {
+                axios.post('http://localhost:5000/api/users/signin', null, {
+                    username: id
+                })
+                .then(res => console.log(res))
+                .catch()
+            }, []) */
 
     return (
         <div className="wrap">
