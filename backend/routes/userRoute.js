@@ -5,28 +5,23 @@ import { getToken, isAuth } from '../utili';
 const router = express.Router();
 
 //로그인
-router.post('/signin',async (req, res)=>{
+router.post('/signin', async (req, res)=>{
     const signinUser = await User.findOne({
-        username: req.body.username
+        username: req.body.username,//카톡아이디
+        password: req.body.password,
     });
     if(signinUser){
         res.send({ 
             _id: signinUser.id,
-            age: signinUser.age,
-            gender: signinUser.gender,
-            mbti: signinUser.mbti,
-            residence: signinUser.residence,
-            height: signinUser.height,
-            keyword: signinUser.keyword,
-            idealAge: signinUser.idealAge,
-            idealMbti: signinUser.idealMbti,
-            idealHeight: signinUser.idealHeight,
-            idealKeyword: signinUser.idealKeyword,
+            username: signinUser.username,
+            character: signinUser.character,
+            idealCharacter: signinUser.idealCharacter,
+            hobby: signinUser.hobby, 
             idealScore: signinUser.idealScore,
             coupleScore: signinUser.coupleScore,
-            matchingScore: signinUser.matchingScore,
+            idealInfo: signinUser.idealInfo,
             matchedId: signinUser.matchedId,
-            isAdmin: updatedUser.isAdmin,
+            isAdmin: signinUser.isAdmin,
             token: getToken(signinUser),
         })
     }else {
@@ -38,36 +33,48 @@ router.post('/signin',async (req, res)=>{
 router.post('/signup', async (req, res)=> {
     const user = new User({
         username: req.body.username,
-        age: req.body.age,
-        gender: req.body.gender,
-        mbti: req.body.mbti,
-        residence: req.body.residence,
-        height: req.body.height,
-        keyword: req.body.keyword,
-        idealAge: req.body.idealAge,
-        idealMbti: req.body.idealMbti,
-        idealHeight: req.body.idealHeight,
-        idealKeyword: req.body.idealKeyword,
+        password: req.body.password,
+        character: req.body.character,
+        idealCharacter: req.body.idealCharacter,
+        hobby: req.body.hobby,
     });
-    const newUser = await user.save();
-    if (newUser) {
-         res.send({
-            _id: newUser.id,
-            age: newUser.age,
-            gender: newUser.gender,
-            mbti: newUser.mbti,
-            residence: newUser.residence,
-            height: newUser.height,
-            keyword: newUser.keyword,
-            idealAge: newUser.idealAge,  
-            idealMbti: newUser.idealMbti,
-            idealHeight: newUser.idealHeight,
-            idealKeyword: newUser.idealKeyword,
-            isAdmin: updatedUser.isAdmin,
-            token: getToken(newUser),
+    try{
+        const newUser = await user.save();
+        if (newUser) {
+            res.send({
+                _id: newUser.id,
+                username: newUser.username,
+                character: newUser.character,
+                idealCharacter: newUser.idealCharacter,
+                hobby: newUser.hobby,
+                isAdmin: newUser.isAdmin,
+                token: getToken(newUser),
+            });
+        }else {
+            res.status(401).send({ message: 'Invalid User Data' });
+    }} catch (error) {
+        res.status(400).send({ message: error.message });
+    }
+});
+
+//정보수정-사용자 정보 조회
+router.get('/info/:id', async (req, res) => {
+    const userId = req.params.id;//데이터베이스 아이디
+    try {
+        const user = await User.findById(userId);
+        res.send({
+            _id: user.id,
+            username: user.username,
+            character: user.character,
+            idealCharacter: user.idealCharacter,
+            hobby: user.hobby,
+            idealInfo: user.idealInfo,
+            matchedId: user.matchedId,
+            isAdmin: user.isAdmin,
+            token: getToken(user),
         });
-    }else {
-        res.status(401).send({ message: 'Invalid User Data' });
+    } catch (error) {
+        res.status(400).send({ message: error.message });
     }
 });
 
@@ -77,29 +84,17 @@ router.put('/edit/:id', isAuth, async (req, res) => {
     const user = await User.findById(userId);
     if (user) {
       user.username = req.body.username || user.username;
-      user.age = req.body.age || user.age;
-      user.gender = req.body.gender || user.gender;
-      user.mbti = req.body.mbti || user.mbti;
-      user.residence = req.body.residence || user.residence;
-      user.height = req.body.height || user.height;
-      user.keyword = req.body.keyword || user.keyword;
-      user.idealAge = req.body.idealAge || user.idealAge;
-      user.idealMbti = req.body.idealMbti || user.idealMbti;
-      user.idealHeight = req.body.idealHeight || user.idealHeight;
-      user.idealKeyword = req.body.idealKeyword || user.idealKeyword;
+      user.password = req.body.password || user.password;
+      user.character = req.body.character || user.character;
+      user.idealCharacter = req.body.idealCharacter || user.idealCharacter;
+      user.hobby = req.body.hobby || user.hobby;
       const updatedUser = await user.save();
       res.send({
         _id: updatedUser.id,
-        age: updatedUser.age,
-        gender: updatedUser.gender,
-        mbti: updatedUser.mbti,
-        residence: updatedUser.residence,
-        height: updatedUser.height,
-        keyword: updatedUser.keyword,
-        idealAge: updatedUser.idealAge,
-        idealMbti: updatedUser.idealMbti,
-        idealHeight: updatedUser.idealHeight,
-        idealKeyword: updatedUser.idealKeyword,
+        username: updatedUser.username,
+        character: updatedUser.character,
+        idealCharacter: updatedUser.idealCharacter,
+        hobby: updatedUser.hobby,
         isAdmin: updatedUser.isAdmin,
         token: getToken(updatedUser),
       });
@@ -112,21 +107,15 @@ router.put('/edit/:id', isAuth, async (req, res) => {
 router.get("/createadmin", async (req, res)=>{
     try {
         const user = new User({
-            username: 'softbear15',
-            age: '22',
-            gender: '여성',
-            mbti: 'istj',
-            residence: '경기도 용인시',
-            height: '163',   
-            keyword: ['토끼상','차분한', '운동'],
-            idealAge: [20, 30],
-            idealMbti: ['esfp'],
-            idealHeight: [174, 185],
-            idealKeyword: ['마른','근육질'],
+            username: 'coder',
+            password: 'focdnoe76',
+            character: '다정한',
+            idealCharacter: '차분한',
+            hobby: '여행',
             idealScore: {"Minsu":75,"Minjun":60 },
             coupleScore: {"Minsu":150 },
-            matchingScore: '75',
-            matchedId: 'gang',
+            idealInfo: 'Minsu-성격:다정한, 취미:게임',
+            matchedId: 'Minsu',
             isAdmin: true,
         });
         const newUser = await user.save();
