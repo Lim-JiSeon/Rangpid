@@ -39,7 +39,11 @@ router.post('/signup', async (req, res)=> {
         hobby: req.body.hobby,
     });
     try{
+        console.log("user = ");
+        console.log(user);
         const newUser = await user.save();
+        console.log("newUser = ");
+        console.log(newUser);
         if (newUser) {
             res.send({
                 _id: newUser.id,

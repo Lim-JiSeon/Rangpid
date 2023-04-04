@@ -1,5 +1,5 @@
 :root {
-  --main-background-color : #F0E5FF;
+  --main-background-color : #F0E5FF; 
   --sub-background-color : #FDF4FF;
   --content-background-color : #F2F2F2;
   --main-txt-color : #000000;
@@ -112,7 +112,7 @@ html, body {
 }
 
 .login-input {
-  width: 1048px;
+  width: 600px;
   height: 131px;
   border: none;
   background-color: var(--content-background-color);
