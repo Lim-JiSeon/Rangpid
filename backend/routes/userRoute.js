@@ -10,6 +10,8 @@ router.post('/signin', async (req, res)=>{
         username: req.body.username,//카톡아이디
         password: req.body.password,
     });
+    console.log(req.body.username);
+    console.log(req.body.password);
     if(signinUser){
         res.send({ 
             _id: signinUser.id,
@@ -23,7 +25,7 @@ router.post('/signin', async (req, res)=>{
             matchedId: signinUser.matchedId,
             isAdmin: signinUser.isAdmin,
             token: getToken(signinUser),
-        })
+        });
     }else {
         res.status(401).send({ message: 'Invalid username.'});
     }
@@ -39,6 +41,7 @@ router.post('/signup', async (req, res)=> {
         hobby: req.body.hobby,
     });
     try{
+        console.log(req.body.username);
         console.log("user = ");
         console.log(user);
         const newUser = await user.save();
