@@ -79,19 +79,20 @@ const Signin = () => {
     
     const login = () => {
         console.log(id, password);
-        axios.post("http://localhost:5000/api/users/signin",null,{
-            username: id,
+        axios.post("http://localhost:5000/api/users/signin",{
+            id: id,
             password: password
         })
         .then((res) => {
-            if (res.data.id === id && res.data.password === password) {
+            console.log(res.data);
+            if (res.data.username === id) {
                 console.log("로그인 성공");
-                sessionStorage.setItem('id', id);
+                localStorage.setItem('id', id);
                 alert("로그인을 성공했습니다.");
-            } else if (res.data.id == null || res.data.password == null) {
+            } else if (id == null || password == null) {
                 console.log("로그인 실패 : 아이디 또는 비밀번호 미입력");
                 alert("아이디, 비밀번호를 모두 입력해주세요.");
-            } else if (res.data.id != id || res.data.password != password) {
+            } else if (res.data.id == null) {
                 console.log("로그인 실패 : 아이디 불일치");
                 alert("아이디 또는 비밀번호가 일치하지 않습니다.");
             } else {
@@ -128,7 +129,7 @@ const Signin = () => {
                         type='submit'
                         onClick={() => {
                             login();
-                            sessionStorage.getItem('id')? navigate("/select"): alert("로그인을 해주세요.")
+                            localStorage.getItem('id')? navigate("/select"): alert("로그인을 해주세요.")
                         }}
                     >
                         로그인하기
