@@ -23,7 +23,6 @@ function Register() {
             ...input,
             [name]:value
         })
-        console.log(input);
     };
 
     const register = () => {
@@ -37,6 +36,7 @@ function Register() {
             console.log("회원가입 성공", res.data);
         })
         .catch((err) => {
+            console.log(input);
             console.log(err);
         });    
     };
@@ -64,7 +64,15 @@ function Register() {
                             name="password"
                             onChange={onChangeInput}
                         ></input>
-                    </div>   
+                    </div>
+                    <div className={style.idInputContainer}>
+                        <div className={style.miniTitle}>비밀 번호 확인</div>
+                        <input className={style.idInput}
+                            type="password"
+                            name="password"
+                            onChange={onChangeInput}
+                        ></input>
+                    </div>    
                 </div>
                 <div className={style.idInputContainer}>
                     <div className={style.miniTitle}>성격</div>
@@ -72,6 +80,7 @@ function Register() {
                         name="character"
                         onChange={onChangeInput}
                     >
+                        <option>선택</option>
                         <option>다정한</option>
                         <option>차분한</option>
                         <option>활발한</option>
@@ -87,6 +96,7 @@ function Register() {
                             name="idealCharacter"
                             onChange={onChangeInput}
                         >
+                            <option>선택</option>
                             <option>다정한</option>
                             <option>차분한</option>
                             <option>활발한</option>
@@ -102,6 +112,7 @@ function Register() {
                             name="hobby"
                             onChange={onChangeInput}
                         >
+                            <option>선택</option>
                             <option>게임</option>
                             <option>영화</option>
                             <option>운동</option>
