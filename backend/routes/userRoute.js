@@ -7,7 +7,7 @@ const router = express.Router();
 //로그인
 router.post('/signin', async (req, res)=>{
     const signinUser = await User.findOne({
-        username: req.body.username,//카톡아이디
+        username: req.body.id,//카톡아이디
         password: req.body.password,
     });
     console.log(req.body.username);
@@ -34,14 +34,13 @@ router.post('/signin', async (req, res)=>{
 //회원가입
 router.post('/signup', async (req, res)=> {
     const user = new User({
-        username: req.body.username,
+        username: req.body.id,
         password: req.body.password,
         character: req.body.character,
         idealCharacter: req.body.idealCharacter,
         hobby: req.body.hobby,
     });
     try{
-        console.log(req.body.username);
         console.log("user = ");
         console.log(user);
         const newUser = await user.save();
@@ -90,7 +89,7 @@ router.put('/edit/:id', isAuth, async (req, res) => {
     const userId = req.params.id;
     const user = await User.findById(userId);
     if (user) {
-      user.username = req.body.username || user.username;
+      user.username = req.body.id || user.username;
       user.password = req.body.password || user.password;
       user.character = req.body.character || user.character;
       user.idealCharacter = req.body.idealCharacter || user.idealCharacter;
