@@ -12,10 +12,10 @@ router.post('/signin', async (req, res)=>{
     });
     console.log(req.body.username);
     console.log(req.body.password);
-    if(signinUser){
+    if(signinUser){ //아이디와 패스워드 모두 일치할 경우
         res.send({ 
             _id: signinUser.id,
-            username: signinUser.username,
+            username: signinUser.username,//카톡아이디
             character: signinUser.character,
             idealCharacter: signinUser.idealCharacter,
             hobby: signinUser.hobby, 
@@ -27,7 +27,15 @@ router.post('/signin', async (req, res)=>{
             token: getToken(signinUser),
         });
     }else {
-        res.status(401).send({ message: 'Invalid username.'});
+        const signinUser = await User.findOne({ username: req.body.id });
+        //아이디는 맞는데 비밀번호가 틀릴 경우
+        if(signinUser){ 
+            res.send({ password: 'incorrect' }); 
+        }
+        //아이디가 존재하지 않을 경우
+        else{ 
+            res.send({ username: 'invalid' }); 
+        }
     }
 });
 
