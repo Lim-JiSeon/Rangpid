@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 const userSchema = new mongoose.Schema({
   username: { type:String, required:true, unique: true },//카톡아이디
   password: { type: String, required: true },
+  gender: { type: String, required: true },
   character: { type:String, required:true },
   idealCharacter: { type:String, required:true },
   hobby: { type:String, required:true },

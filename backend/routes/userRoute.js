@@ -10,12 +10,11 @@ router.post('/signin', async (req, res)=>{
         username: req.body.id,//카톡아이디
         password: req.body.password,
     });
-    console.log(req.body.username);
-    console.log(req.body.password);
     if(signinUser){ //아이디와 패스워드 모두 일치할 경우
         res.send({ 
             _id: signinUser.id,
             username: signinUser.username,//카톡아이디
+            gender: signinUser.gender,
             character: signinUser.character,
             idealCharacter: signinUser.idealCharacter,
             hobby: signinUser.hobby, 
@@ -44,6 +43,7 @@ router.post('/signup', async (req, res)=> {
     const user = new User({
         username: req.body.id,
         password: req.body.password,
+        gender: req.body.gender,
         character: req.body.character,
         idealCharacter: req.body.idealCharacter,
         hobby: req.body.hobby,
@@ -58,6 +58,7 @@ router.post('/signup', async (req, res)=> {
             res.send({
                 _id: newUser.id,
                 username: newUser.username,
+                gender: newUser.gender,
                 character: newUser.character,
                 idealCharacter: newUser.idealCharacter,
                 hobby: newUser.hobby,
@@ -79,6 +80,7 @@ router.get('/info/:id', async (req, res) => {
         res.send({
             _id: user.id,
             username: user.username,
+            gender: user.gender,
             character: user.character,
             idealCharacter: user.idealCharacter,
             hobby: user.hobby,
@@ -99,6 +101,7 @@ router.put('/edit/:id', isAuth, async (req, res) => {
     if (user) {
       user.username = req.body.id || user.username;
       user.password = req.body.password || user.password;
+      user.gender = req.body.gender || user.gender;
       user.character = req.body.character || user.character;
       user.idealCharacter = req.body.idealCharacter || user.idealCharacter;
       user.hobby = req.body.hobby || user.hobby;
@@ -106,6 +109,7 @@ router.put('/edit/:id', isAuth, async (req, res) => {
       res.send({
         _id: updatedUser.id,
         username: updatedUser.username,
+        gender: updatedUser.gender,
         character: updatedUser.character,
         idealCharacter: updatedUser.idealCharacter,
         hobby: updatedUser.hobby,
@@ -123,6 +127,7 @@ router.get("/createadmin", async (req, res)=>{
         const user = new User({
             username: 'coder',
             password: 'focdnoe76',
+            gender: '여성',
             character: '다정한',
             idealCharacter: '차분한',
             hobby: '여행',
