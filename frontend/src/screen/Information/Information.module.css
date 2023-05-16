@@ -113,6 +113,11 @@ html, body {
     text-align: center;
 }
 
+input::placeholder {
+    color: #000000;
+    font-size: var(--semi-title-font-size);
+}
+
 .mSex,
 .fSex {
     font-size: var(--semi-title-font-size);

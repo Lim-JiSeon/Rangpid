@@ -87,6 +87,7 @@ const Signin = () => {
             console.log(res.data);
             if (res.data.username === id) {
                 console.log("로그인 성공");
+                sessionStorage.setItem("_id", res.data._id);
                 alert("로그인을 성공했습니다.");
             } else if (id == "" || password == "") {
                 console.log("로그인 실패 : 아이디 또는 비밀번호 미입력");
