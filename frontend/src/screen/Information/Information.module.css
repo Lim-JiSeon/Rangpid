@@ -201,14 +201,14 @@ select {
     margin-right: 150px;
 }
 
-.registerContainer {
+.informationContainer {
     width: 100%;
     display: flex;
     justify-content: center;
     margin-top: 50px;
 }
 
-.registerBtn {
+.informationBtn {
     width: 296px;
     height: 72px;
     background-color: var(--main-background-color);

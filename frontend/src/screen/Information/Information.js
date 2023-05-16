@@ -26,8 +26,8 @@ function Information() {
         console.log(input);
     };
 
-    const register = () => {
-        axios.post("http://localhost:5000/api/users/signup",input,
+    const information = () => {
+        axios.get("http://localhost:5000/api/users/info/${id}",input,
         {
           headers: {
             "Content-Type": "application/json",
@@ -65,7 +65,26 @@ function Information() {
                             name="password"
                             onChange={onChangeInput}
                         ></input>
-                    </div>   
+                    </div>
+                    <div className={style.idInputContainer}>
+                        <div className={style.miniTitle}>비밀 번호 확인</div>
+                        <input className={style.idInput}
+                            type="password"
+                            name="password"
+                            onChange={onChangeInput}
+                        ></input>
+                    </div>    
+                </div>
+                <div className={style.idInputContainer}>
+                    <div className={style.miniTitle}>성별</div>
+                    <select className={style.idInput}
+                        name="gender"
+                        onChange={onChangeInput}
+                    >
+                        <option>선택</option>
+                        <option>여성</option>
+                        <option>남성</option>
+                    </select>
                 </div>
                 <div className={style.idInputContainer}>
                     <div className={style.miniTitle}>성격</div>
@@ -73,6 +92,7 @@ function Information() {
                         name="character"
                         onChange={onChangeInput}
                     >
+                        <option>선택</option>
                         <option>다정한</option>
                         <option>차분한</option>
                         <option>활발한</option>
@@ -88,6 +108,7 @@ function Information() {
                             name="idealCharacter"
                             onChange={onChangeInput}
                         >
+                            <option>선택</option>
                             <option>다정한</option>
                             <option>차분한</option>
                             <option>활발한</option>
@@ -103,6 +124,7 @@ function Information() {
                             name="hobby"
                             onChange={onChangeInput}
                         >
+                            <option>선택</option>
                             <option>게임</option>
                             <option>영화</option>
                             <option>운동</option>
@@ -115,11 +137,11 @@ function Information() {
             </div>
 
             
-            <div className={style.registerContainer}>
-                    <button className={style.registerBtn}
+            <div className={style.informationContainer}>
+                    <button className={style.informationBtn}
                         type='submit'
                         onClick={() => {
-                            register();
+                            information();
                             navigate("/select");
                         }}
                     >
