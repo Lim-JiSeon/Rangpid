@@ -87,14 +87,16 @@ const Signin = () => {
             console.log(res.data);
             if (res.data.username === id) {
                 console.log("로그인 성공");
-                localStorage.setItem('id', id);
                 alert("로그인을 성공했습니다.");
-            } else if (id == null || password == null) {
+            } else if (id == "" || password == "") {
                 console.log("로그인 실패 : 아이디 또는 비밀번호 미입력");
                 alert("아이디, 비밀번호를 모두 입력해주세요.");
-            } else if (res.data.id == null) {
+            } else if (res.data.username == "invalid") {
                 console.log("로그인 실패 : 아이디 불일치");
-                alert("아이디 또는 비밀번호가 일치하지 않습니다.");
+                alert("아이디가 일치하지 않습니다.");
+            } else if (res.data.password == "incorrect") {
+                console.log("로그인 실패 : 비밀번호 불일치");
+                alert("비밀번호가 일치하지 않습니다.");
             } else {
                 console.log("로그인 실패");
                 alert("다시 로그인해주세요.");
@@ -129,7 +131,7 @@ const Signin = () => {
                         type='submit'
                         onClick={() => {
                             login();
-                            localStorage.getItem('id')? navigate("/select"): alert("로그인을 해주세요.")
+                            navigate("/select");
                         }}
                     >
                         로그인하기

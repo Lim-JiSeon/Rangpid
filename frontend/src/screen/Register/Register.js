@@ -10,12 +10,13 @@ function Register() {
     let [input, setInput] = useState({
         id: '',
         password: '',
+        gender: '',
         character: '',
         idealCharacter: '',
         hobby: ''
     });
 
-    const {id, password, character, idealCharacter, hobby} = input;
+    const {id, password, gender, character, idealCharacter, hobby} = input;
 
     const onChangeInput = (e) => {
         const {name, value} = e.target;
@@ -74,6 +75,17 @@ function Register() {
                             onChange={onChangeInput}
                         ></input>
                     </div>    
+                </div>
+                <div className={style.idInputContainer}>
+                    <div className={style.miniTitle}>성별</div>
+                    <select className={style.idInput}
+                        name="gender"
+                        onChange={onChangeInput}
+                    >
+                        <option>선택</option>
+                        <option>여성</option>
+                        <option>남성</option>
+                    </select>
                 </div>
                 <div className={style.idInputContainer}>
                     <div className={style.miniTitle}>성격</div>
